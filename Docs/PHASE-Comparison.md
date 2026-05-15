@@ -1,238 +1,258 @@
-# Sensei Release-Phase Comparison
+# GPMP Release Comparison
 
-This page provides an indeph view on the improvmenets started with "Pahse 1" of project "Sensei".
+This document provides an overview of the feature evolution and architectural improvements between the public GPMP release generations.
 
 ---
 
-## 📈 Phase Comparison (Quick Look)
+# 📈 Release Comparison
 
-| Feature | Phase 1 (RC1) | Phase 2 (RC2) |
+| Feature | DEV RC1 | Nightly RC1 |
 |---|---|---|
 | OU Tree Visualization | ✅ | ✅ |
 | GPO Object Search | ✅ | ✅ |
 | GPO HTML Report Rendering | ✅ | ✅ |
 | Inheritance Visualization | ✅ | ✅ |
-| Read-only Architecture | ✅ | ✅ |
 | Windows Authentication | ✅ | ✅ |
 | RID-based Authorization | ✅ | ✅ |
-| Global Write Protection | ✅ | ✅ |
-| Release Channels / Labels | ✅ | ✅ |
 | Initial Startup Sync | ✅ | ✅ |
 | Sync History | ✅ | ✅ |
-| Self-contained Deployment | ✅ | ✅ |
-| Windows Service Support | ✅ | ✅ |
 | PostgreSQL Backend | ✅ | ✅ |
+| Windows Service Support | ✅ | ✅ |
+| Self-contained Deployment | ✅ | ✅ |
 | GPO Status Changes | ❌ | ✅ |
+| Create GPO Workflow | ❌ | ✅ |
+| Delete GPO Workflow | ❌ | ✅ |
+| Link GPO to OU | ❌ | ✅ |
+| Remove GPO Links | ❌ | ✅ |
 | GPO Link Enable / Disable | ❌ | ✅ |
 | GPO Enforcement Toggle | ❌ | ✅ |
-| Quick-action Badges | ❌ | ✅ |
-| Instant UI Refresh After Changes | ❌ | ✅ |
+| Interactive Badge Actions | ❌ | ✅ |
+| Modal-based Write Operations | ❌ | ✅ |
+| Keyboard-aware Modal UX | ❌ | ✅ |
+| Real-time UI Updates | ❌ | ✅ |
+| Live Cache Synchronization | ❌ | ✅ |
 | Write-aware UI Controls | ❌ | ✅ |
 | Confirmation Dialogs | ❌ | ✅ |
-| Audit Logging Foundation | ⚠️ Basic | ✅ Improved |
-| Live AD Write Operations | ❌ | ✅ |
-| Cached DB State Updates | ❌ | ✅ |
-| Enterprise-safe Write Model | ❌ | ✅ |
-| Direct vs Inherited Link Logic | ⚠️ Visual Only | ✅ Interactive |
-| Real-time GPO Link Management | ❌ | ✅ |
-| Create GPO Workflow | ❌ | ✅ |
-| Modal-based Write Dialogs | ❌ | ✅ |
-| Interactive Write Modals | ❌ | ✅ |
-| Live Cache Mutation After Writes | ❌ | ✅ |
+| Controlled Write Architecture | ❌ | ✅ |
 | Dynamic Badge State Refresh | ❌ | ✅ |
-| Reusable Write Confirmation Framework | ❌ | ✅ |
-| Keyboard-aware Modal UX | ❌ | ✅ |
+| Interactive Link Management | ❌ | ✅ |
+| Split Stylesheet Architecture | ❌ | ✅ |
+| Optimistic UI Refresh Strategy | ❌ | ✅ |
+| Advanced Write UX | ❌ | ✅ |
+| Cached Metadata Updates After Writes | ❌ | ✅ |
 
-<br>
+---
 
-### Interpretation
+# 📘 Interpretation
 
 | Symbol | Meaning |
 |---|---|
 | ✅ | Implemented |
 | ❌ | Not implemented |
-| ⚠️ | Partial / basic implementation |
-
-<br>
+| ⚠️ | Partial implementation |
 
 ---
 
-<br>
+# 🆕 Major Additions in Nightly
 
-## 🧩 New in Phase 2
+RC2 introduces the first interactive write operations for GPMP.
 
-Phase 2 introduces the first production-grade write operations.
+The platform evolves from a visualization-focused portal into a browser-based operational management platform for Microsoft Group Policy environments.
 
-The portal is no longer only a visualization layer — it now supports controlled Active Directory modifications directly from the web UI.
+---
 
-### ✅ Implemented Write Operations
+# 🧩 New Write Operations
 
-#### GPO Object Management
-- Create new GPOs
-<img alt="image" src="Assets/gpo-create.png" />
-<br>
-<br>
+## GPO Object Management
 
-- Delete existing GPOs
-<img alt="image" src="Assets/gpo-delete.png" />
-<br>
-<br>
+### Create new GPOs
 
-- Change GPO status:
-  - All settings enabled
-  - User configuration disabled
-  - Computer configuration disabled
-  - Entire GPO disabled
-<img alt="image" src="Assets/change-gposettings.png" />
-<br>
-<br>
+<img alt="Create GPO" src="Assets/gpo-create.png" />
+<br><br>
 
+### Delete existing GPOs
 
-#### GPO Link Management
-- Link GPO to an OU
-<img alt="image" src="Assets/link-gpo.png" />
-<br>
-<br>
+<img alt="Delete GPO" src="Assets/gpo-delete.png" />
+<br><br>
 
-- Interactive quick-action badges
-<img alt="image" src="Assets/quick-badges.png" />
-<br>
-<br>
+### Change GPO Status
 
-- Enable / Disable GPO Links
-<img alt="image" src="Assets/disable-link.png" />
-<br>
-<br>
+Supported states:
 
-- Enforce / remove enforcement
-<img alt="image" src="Assets/enforce-gpo.png" />
-<br>
-<br>
+- All settings enabled
+- User configuration disabled
+- Computer configuration disabled
+- Entire GPO disabled
 
-- Remove GPO Link from OUs
-<img alt="image" src="Assets/remove-linked-gpo.png" />
-<br>
-<br>
+<img alt="Change GPO Status" src="Assets/change-gposettings.png" />
+<br><br>
 
-- Immediate UI refresh after changes
+---
 
-<br>
+## GPO Link Management
 
-#### Write UX
-- Modal-based confirmation dialogs
-- Write-aware UI controls
-- Keyboard-aware write dialogs
-- Real-time badge refresh
-- Dynamic write state visibility
+### Link GPOs to OUs
 
-### ✅ Core Functionality & Management
-- Active Directory OU Tree visualization
-- GPO object listing and filtering
-- GPO details & HTML report rendering
-- GPO inheritance view
-- Searching across all Group Policy Objects and matching based on 'Name', 'Description' or 'Content'. Match is Highlighted for instant visibillity.
-- Instant visibillity of link status, enforcement and enabled or disabled Group Policy Objects
-- Live GPO write operations
-- Quick-action inheritance management
-- Link enforcement toggling
-- Write-aware badges and controls
+<img alt="Link GPO" src="Assets/link-gpo.png" />
+<br><br>
 
-### 🔒 Enterprise Safety Features
-- Global write mode toggle
-- Separate read/write authorization
-- Write-aware UI
-- Confirmation dialogs
-- Audit logging foundation
-- Controlled PowerShell execution layer
+### Interactive Quick-Action Badges
 
-### ⚡ Live UI Improvements
-- Instant badge updates
-- Real-time inheritance refresh
-- Dynamic write-state rendering
-- Improved action visibility
-- Release-aware toolbar
+<img alt="Quick Badges" src="Assets/quick-badges.png" />
+<br><br>
 
-### 🖥️ Modern UI Workflow
+### Enable / Disable GPO Links
 
-Phase 2 RC2 introduces a more modern operational workflow inspired by contemporary admin portals rather than legacy MMC tooling.
+<img alt="Disable Link" src="Assets/disable-link.png" />
+<br><br>
 
-Implemented UX improvements include:
+### Enforce / Remove Enforcement
 
-- Modal-based write dialogs
-- Interactive quick-action badges
-- Real-time UI refresh after changes
-- Dynamic toolbar state awareness
-- Context-sensitive write controls
-- Instant inheritance updates
-- Write-operation visibility separation
-- Keyboard-aware dialog handling
+<img alt="Enforce GPO" src="Assets/enforce-gpo.png" />
+<br><br>
 
-The portal now behaves more like a modern management platform instead of a static administration console.
+### Remove GPO Links from OUs
 
+<img alt="Remove Linked GPO" src="Assets/remove-linked-gpo.png" />
+<br><br>
 
-### 🧠 Architecture Improvements
-- Cached database updates after write operations
-- Optimistic UI refresh strategy
-- Better separation between:
-  - GPO object state
-  - GPO link state
-  - inheritance behavior
+### Live UI Synchronization
 
-#### Stylesheet Structure
+After write operations, the interface updates immediately without requiring manual reloads.
 
-The UI styling is split into focused stylesheet files:
+---
 
-- `stylesheet_main.css` – base layout, panels, tree, details and report view
-- `stylesheet_toolbar.css` – toolbar, release badges, sync state and authorization display
-- `stylesheet_modal.css` – modal dialogs and write-confirmation UX
-- `stylesheet_misc.css` – reusable badges, GPO list styling and utility classes
+# 🖥️ Modernized Operational Workflow
 
- 
-### 📘 Important Terminology
+RC2 introduces a significantly more modern operational workflow inspired by contemporary web administration platforms.
 
-Sensei differentiates between:
+Implemented improvements include:
+
+- modal-based write dialogs
+- interactive badge operations
+- keyboard-aware workflows
+- context-sensitive controls
+- live inheritance updates
+- dynamic UI refresh behavior
+- write-aware interface rendering
+- operational state visibility
+
+The platform now behaves more like a modern operational management system rather than a static administration console.
+
+---
+
+# ⚡ UI & UX Improvements
+
+RC2 introduces:
+
+- real-time badge updates
+- live inheritance refresh
+- dynamic write-state rendering
+- context-sensitive operations
+- improved action visibility
+- interactive modal workflows
+- cleaner operational separation
+
+---
+
+# 🧠 Architectural Improvements
+
+## Cache Synchronization
+
+RC2 introduces live cache synchronization after write operations.
+
+Affected objects are updated immediately after successful operations to keep the UI synchronized with Active Directory state.
+
+---
+
+## Operational Separation
+
+The platform now clearly separates:
+
+- GPO object state
+- GPO link state
+- inheritance behavior
+- authorization capability
+- operational visibility
+
+This separation improves operational clarity and reduces ambiguity.
+
+---
+
+## Stylesheet Architecture
+
+The frontend styling was split into focused stylesheet components:
+
+| File | Purpose |
+|---|---|
+| `stylesheet_main.css` | Core layout, panels and report rendering |
+| `stylesheet_toolbar.css` | Toolbar, sync state and authorization display |
+| `stylesheet_modal.css` | Modal dialogs and write workflows |
+| `stylesheet_misc.css` | Utility classes, badges and reusable UI elements |
+
+---
+
+# 📘 Important Terminology
+
+GPMP differentiates between several operational concepts:
 
 | Type | Meaning |
-|------|----------|
-| GPO Status | Object-level configuration state (enabled/disabled settings) |
-| GPO Link State | Whether a GPO link is linked or unlinked on a container |
-| Enforcement | Whether the GPO overrides inheritance blocking |
-| Link Scope | Whether the GPO is directly linked or inherited |
+|---|---|
+| GPO Status | Object-level configuration state |
+| GPO Link State | Whether a GPO is linked to a container |
+| Enforcement | Whether inheritance blocking is overridden |
+| Link Scope | Whether a link is direct or inherited |
 
-This separation avoids ambiguity and mirrors real enterprise Group Policy behavior.
-
+This separation mirrors native Microsoft Group Policy behavior.
 
 ---
 
-## 🧩 Features (Phase 1)
+# 🧩 Core Features Available Since DEV RC1
 
-### ✅ Core Functionality
-- Active Directory OU Tree visualization
-- GPO object listing and filtering
-- GPO details & HTML report rendering
-- GPO inheritance view
-- Searching across all Group Policy Objects and matching based on 'Name', 'Description' or 'Content'. Match is Highlighted for instant visibillity.
-- Instant visibillity of link status, enforcement and enabled or disabled Group Policy Objects
+## Read Operations
 
-### 🔐 Security & Access Control
-- Windows Authentication (Negotiate / Kerberos / NTLM)
-- Group-based authorization (via SID / RID)
-- Read / Write separation
-- Global write toggle (safe-by-default)
+- Active Directory OU tree visualization
+- GPO object browsing
+- inheritance visualization
+- HTML report rendering
+- full-text GPO search
+- search highlighting
+- link state visibility
 
-### ⚙️ Backend
+---
+
+## Security & Authorization
+
+- Windows Authentication
+- Kerberos / NTLM support
+- RID-based authorization
+- read/write separation
+- global write protection
+
+---
+
+## Backend Platform
+
 - ASP.NET Core (.NET 10)
-- PostgreSQL database
+- PostgreSQL
 - Entity Framework Core
-- PowerShell integration (GPO reporting & sync)
+- PowerShell integration
 
-### 🔄 Sync System
-- Manual sync (GPOs, OUs, inheritance, reports)
-- Initial startup sync (optional)
-- Sync history tracking
+---
 
-### 🧪 Deployment
-- Self-contained publish (no Visual Studio required)
-- Windows Service installation
-- Automated prerequisite script (RSAT, PostgreSQL, DB setup)
+## Synchronization Features
 
+- manual synchronization
+- startup synchronization
+- sync history tracking
+- report synchronization
+
+---
+
+## Deployment Features
+
+- self-contained publishing
+- Windows Service support
+- automated prerequisite installation
+- PostgreSQL integration
+- deployment scripting
