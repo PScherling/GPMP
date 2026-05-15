@@ -7,6 +7,7 @@
 ![Auth](https://img.shields.io/badge/auth-Windows%20Negotiate-green)
 ![Mode](https://img.shields.io/badge/mode-controlled--write-orange)
 
+<img width="200px" alt="image" src="Docs/Assets/logo-simple.png" /><br>
 > A modern, lightweight reimagining of the Group Policy Management Console (GPMC)  
 > built for clarity, speed, and real-world administrative workflows.
 
@@ -16,7 +17,7 @@
 
 **GPMP (Group Policy Management Portal)** is a web-based tool designed to simplify and modernize how administrators interact with Active Directory Group Policies.
 
-<img width="2518" height="1144" alt="image" src="Docs/Assets/Dashboard.png" /><br>
+<img alt="image" src="Docs/Assets/Dashboard.png" /><br>
 
 
 Instead of relying on the legacy MMC-based GPMC, GPMP provides:
