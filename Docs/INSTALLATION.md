@@ -9,47 +9,16 @@ The obvious part first! Before you consider using this solution, you need to set
 <img alt="image" src="Assets/zip-package.png" />
 
 
-### 2. Prerequisites Installation
-
-Open PowerShell with administrative rights and go into the directory where you extracted the zipped files.
-
-```powershell
-cd "D:\Temp\GPO-Portal\GpoPortal-dev-RC-2-v0.0.7\tools"
-```
-
-<img alt="image" src="Assets/set-location.png" />
-
-
-#### Installation of the database (Internet Connection required!)
-Run:
-
-```powershell
-.\Install-GpoPortalPrereqs.ps1 -InstallPostgres -CreateDatabase
-```
-
-This will:
-- Install required RSAT features
-- Download and install PostgreSQL with dependencies
-- Create database & user
-- Validate connectivity
-
-<img alt="image" src="Assets/prereq-installation.png" /><br><br>
-
-If you don't have an internet connection, you have to provide the postgresql installer file by yourself. You need to provide the path where the installer is located. e.g.:
-```powershell
-.\Install-GpoPortalPrereqs.ps1 -InstallPostgres -CreateDatabase -PostgresInstallerPath ".\tools\postgresql-installer.exe" 
-```
-<br>
-
 ### 2. Install the Application
 
 Run:
 
 ```powershell
-.\Install-GpoPortal.ps1 -OpenFirewall -ApplyMigrations -RunInitialSyncOnStartup
+.\Install-GPMP.ps1 -OpenFirewall -ApplyMigrations -RunInitialSyncOnStartup -InstallPrerequisites
 ```
 
 This will:
+- Install all needed prerequisites needed like 'RSAT-Tools' and PostgreSQL (Internet connection is needed!)
 - Deploy application to C:\Program Files\GpoPortal
 - Register Windows Service
 - Applies my intended DB schema with 'ApplyMigrations'
