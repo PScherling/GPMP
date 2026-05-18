@@ -2,7 +2,7 @@
 
 ## 💡 Vision
 
-Sensei aims to become:
+GPMP aims to become:
 
 “The modern GPMC replacement for real-world enterprise environments.
 Classic GPMC Re-Imagined for admins of tomorrow.”
@@ -84,12 +84,6 @@ Not just a viewer — but a control plane for Group Policy.
 </dl>
 
 
----
 
-## ⚠️ Known Limitations (RC1)
-- No write operations UI yet (read-first design)
-- No multi-user audit trail
-- No role-based UI personalization
-- Initial sync progress visibility is basic
 
 
