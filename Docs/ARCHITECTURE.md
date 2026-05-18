@@ -128,52 +128,6 @@ This ensures compatibility with existing enterprise environments.
 
 ---
 
-## 🛡️ Write Operation Philosophy
-
-GPMP follows a deliberately controlled write model.
-
-Write operations are:
-
-- disabled globally by default
-- separated from read permissions
-- confirmation protected
-- visually isolated in the UI
-- synchronized immediately after execution
-
-<br>
-
-The architecture intentionally separates:
-
-- GPO object state
-- GPO link state
-- inheritance behavior
-- UI visibility
-- authorization capability
-- operational mode
-
-This separation helps reduce ambiguity and improves operational clarity.
-
----
-
-## 🔐 Authorization Model
-
-GPMP uses Windows Authentication with RID-based authorization.
-
-This avoids localization issues across different Active Directory languages and naming conventions.
-
-Examples:
-
-- Group	RID
-- Domain Admins --> 512
-- Enterprise Admins --> 519
-
-Authorization is evaluated independently for:
-
-- read access
-- write access
-
----
-
 ## 🔄 Synchronization Concept
 
 GPMP uses a cache-driven synchronization model.
