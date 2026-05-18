@@ -4,7 +4,7 @@ This document provides an overview of the feature evolution and architectural im
 
 ---
 
-# 📈 Release Comparison
+## 📈 Release Comparison
 
 | Feature | DEV RC1 | Nightly RC1 |
 |---|---|---|
@@ -41,9 +41,9 @@ This document provides an overview of the feature evolution and architectural im
 | Advanced Write UX | ❌ | ✅ |
 | Cached Metadata Updates After Writes | ❌ | ✅ |
 
----
 
-# 📘 Interpretation
+
+### 📘 Interpretation
 
 | Symbol | Meaning |
 |---|---|
@@ -53,29 +53,29 @@ This document provides an overview of the feature evolution and architectural im
 
 ---
 
-# 🆕 Major Additions in Nightly
+## 🆕 Major Additions in Nightly
 
-RC2 introduces the first interactive write operations for GPMP.
+**Nightly RC1** introduces the first interactive write operations for GPMP.
 
 The platform evolves from a visualization-focused portal into a browser-based operational management platform for Microsoft Group Policy environments.
 
 ---
 
-# 🧩 New Write Operations
+## 🧩 New Write Operations
 
-## GPO Object Management
+### GPO Object Management
 
-### Create new GPOs
+#### Create new GPOs
 
 <img alt="Create GPO" src="Assets/gpo-create.png" />
 <br><br>
 
-### Delete existing GPOs
+#### Delete existing GPOs
 
 <img alt="Delete GPO" src="Assets/gpo-delete.png" />
 <br><br>
 
-### Change GPO Status
+#### Change GPO Status
 
 Supported states:
 
@@ -89,42 +89,42 @@ Supported states:
 
 ---
 
-## GPO Link Management
+### GPO Link Management
 
-### Link GPOs to OUs
+#### Link GPOs to OUs
 
 <img alt="Link GPO" src="Assets/link-gpo.png" />
 <br><br>
 
-### Interactive Quick-Action Badges
+#### Interactive Quick-Action Badges
 
 <img alt="Quick Badges" src="Assets/quick-badges.png" />
 <br><br>
 
-### Enable / Disable GPO Links
+#### Enable / Disable GPO Links
 
 <img alt="Disable Link" src="Assets/disable-link.png" />
 <br><br>
 
-### Enforce / Remove Enforcement
+#### Enforce / Remove Enforcement
 
 <img alt="Enforce GPO" src="Assets/enforce-gpo.png" />
 <br><br>
 
-### Remove GPO Links from OUs
+#### Remove GPO Links from OUs
 
 <img alt="Remove Linked GPO" src="Assets/remove-linked-gpo.png" />
 <br><br>
 
-### Live UI Synchronization
+#### Live UI Synchronization
 
 After write operations, the interface updates immediately without requiring manual reloads.
 
 ---
 
-# 🖥️ Modernized Operational Workflow
+## 🖥️ Modernized Operational Workflow
 
-RC2 introduces a significantly more modern operational workflow inspired by contemporary web administration platforms.
+**Nightly RC1** introduces a significantly more modern operational workflow inspired by contemporary web administration platforms.
 
 Implemented improvements include:
 
@@ -141,9 +141,9 @@ The platform now behaves more like a modern operational management system rather
 
 ---
 
-# ⚡ UI & UX Improvements
+## ⚡ UI & UX Improvements
 
-RC2 introduces:
+**Nightly RC1** introduces:
 
 - real-time badge updates
 - live inheritance refresh
@@ -155,17 +155,17 @@ RC2 introduces:
 
 ---
 
-# 🧠 Architectural Improvements
+## 🧠 Architectural Improvements
 
 ## Cache Synchronization
 
-RC2 introduces live cache synchronization after write operations.
+**Nightly RC1** introduces live cache synchronization after write operations.
 
 Affected objects are updated immediately after successful operations to keep the UI synchronized with Active Directory state.
 
 ---
 
-## Operational Separation
+### Operational Separation
 
 The platform now clearly separates:
 
@@ -179,7 +179,7 @@ This separation improves operational clarity and reduces ambiguity.
 
 ---
 
-## Stylesheet Architecture
+### Stylesheet Architecture
 
 The frontend styling was split into focused stylesheet components:
 
@@ -192,7 +192,7 @@ The frontend styling was split into focused stylesheet components:
 
 ---
 
-# 📘 Important Terminology
+## 📘 Important Terminology
 
 GPMP differentiates between several operational concepts:
 
@@ -207,9 +207,9 @@ This separation mirrors native Microsoft Group Policy behavior.
 
 ---
 
-# 🧩 Core Features Available Since DEV RC1
+## 🧩 Core Features Available Since DEV RC1
 
-## Read Operations
+### Read Operations
 
 - Active Directory OU tree visualization
 - GPO object browsing
@@ -221,7 +221,7 @@ This separation mirrors native Microsoft Group Policy behavior.
 
 ---
 
-## Security & Authorization
+### Security & Authorization
 
 - Windows Authentication
 - Kerberos / NTLM support
@@ -231,7 +231,7 @@ This separation mirrors native Microsoft Group Policy behavior.
 
 ---
 
-## Backend Platform
+### Backend Platform
 
 - ASP.NET Core (.NET 10)
 - PostgreSQL
@@ -240,7 +240,7 @@ This separation mirrors native Microsoft Group Policy behavior.
 
 ---
 
-## Synchronization Features
+### Synchronization Features
 
 - manual synchronization
 - startup synchronization
@@ -249,7 +249,7 @@ This separation mirrors native Microsoft Group Policy behavior.
 
 ---
 
-## Deployment Features
+### Deployment Features
 
 - self-contained publishing
 - Windows Service support
