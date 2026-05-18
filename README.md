@@ -194,16 +194,6 @@ Always test in a non-production environment before deploying into critical infra
 | [ROADMAP.md](Docs/ROADMAP.md) | Planned features and future direction |
 | [Logging.md](Docs/LOGGING.md) | Application logging information |
 
-
----
-
-<br>
-
-## 👤 Author
-
-**Author:** Patrick Scherling  
-**Contact:** @Patrick Scherling  
-
 ---
 
 <br>
@@ -218,6 +208,16 @@ GPMP aims to modernize Group Policy management through:
 - automation-friendly architecture
 
 without replacing Microsoft’s underlying Group Policy infrastructure.
+
+
+---
+
+<br>
+
+## 👤 Author
+
+**Author:** Patrick Scherling  
+**Contact:** @Patrick Scherling  
 
 ---
 
