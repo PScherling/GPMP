@@ -164,8 +164,8 @@ This avoids localization issues across different Active Directory languages and 
 Examples:
 
 - Group	RID
-- Domain Admins	512
-- Enterprise Admins	519
+- Domain Admins --> 512
+- Enterprise Admins --> 519
 
 Authorization is evaluated independently for:
 
@@ -203,19 +203,4 @@ The architecture focuses on:
 
 while remaining fully compatible with Microsoft’s native Group Policy ecosystem.
 
----
 
-🧠 Long-Term Vision
-
-The long-term goal of GPMP is to evolve into a modern operational platform for enterprise Group Policy management.
-
-Planned architectural expansion areas include:
-
-- scheduled background synchronization
-- advanced auditing
-- delegated RBAC models
-- multi-domain awareness
-- approval workflows
-- WMI filter management
-- security filtering management
-- API-driven automation workflows
