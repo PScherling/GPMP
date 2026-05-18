@@ -1,6 +1,6 @@
 # Installation Instructions
 
-The obvious part first! Before you consider using this solution, you need to setup an active-directory in the first place, like you would do to use GPMC. I will not provide any documentation how to establish that, because tehre are many guides out there ;)
+The obvious part first! Before you consider using this solution, you need to setup an active-directory in the first place, like you would do to use GPMC. I will not provide any documentation how to establish that, because there are many guides out there ;)
 
 
 ## 📦 Installation (Quick Start)
