@@ -11,7 +11,7 @@ The obvious part first! Before you consider using this solution, you need to set
 
 ### 2. Prerequisites Installation
 
-Open PowerShell with administrative rights and go into the this directory.
+Open PowerShell with administrative rights and go into the directory where you extracted the zipped files.
 
 ```powershell
 cd "D:\Temp\GPO-Portal\GpoPortal-dev-RC-2-v0.0.7\tools"
@@ -35,7 +35,7 @@ This will:
 
 <img alt="image" src="Assets/prereq-installation.png" /><br><br>
 
-If you don't have an internet connection, you have to provide the postgresql installer file. e.g.:
+If you don't have an internet connection, you have to provide the postgresql installer file by yourself. You need to provide the path where the installer is located. e.g.:
 ```powershell
 .\Install-GpoPortalPrereqs.ps1 -InstallPostgres -CreateDatabase -PostgresInstallerPath ".\tools\postgresql-installer.exe" 
 ```
@@ -52,7 +52,7 @@ Run:
 This will:
 - Deploy application to C:\Program Files\GpoPortal
 - Register Windows Service
-- Apply DB schema
+- Applies my intended DB schema with 'ApplyMigrations'
 - Creates Log directory in C:\ProgramData\GpoPortal
 - Optionally trigger initial sync
 
@@ -93,7 +93,7 @@ Find and set with 'Notepad++':
 "AllowWriteOperations":  true
 ```
 
-You need to restart the gpo-portal service after changing the configration file in order to take effect:
+You need to restart the GPO-Portal service after changing the configration file in order to take effect:
 ```powershell
 Restart-Service GpoPortal
 ```
