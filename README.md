@@ -19,7 +19,7 @@
 
 **GPMP (Group Policy Management Portal)** is a modern web-based management platform for Microsoft Group Policy environments.
 
-It modernizes classic Group Policy administration by replacing legacy MMC-based workflows with a fast, interactive and browser-based experience — while still fully relying on Microsoft's native Group Policy infrastructure.
+It modernizes classic Group Policy administration by replacing legacy MMC-based workflows with a fast, interactive and browser-based experience, while still fully relying on Microsoft's native Group Policy infrastructure.
 
 <img alt="image" src="Docs/Assets/Dashboard.png" /><br>
 
@@ -106,7 +106,7 @@ The project is evolving toward a modern operational platform for enterprise Grou
 
 # ❔ Why GPMP?
 
-Classic GPMC is powerful — but operationally outdated.
+Classic GPMC is powerful, but operationally outdated.
 
 GPMP modernizes Group Policy management through:
 
