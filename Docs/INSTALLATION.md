@@ -6,7 +6,7 @@ The obvious part first! Before you consider using this solution, you need to set
 ## 📦 Installation (Quick Start)
 
 ### 1. Extract the zip package
-<img alt="image" src="Assets/zip-package_.png" />
+<img alt="image" src="Assets/package.png" />
 
 
 ### 2. Install the Application
