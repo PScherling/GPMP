@@ -186,7 +186,7 @@ Always test in a non-production environment before deploying into critical infra
 
 | Document | Description |
 |---|---|
-| [PHASE-COMPARISON.md](Docs/PHASE-Comparison.md) | RC1 vs RC2 feature comparison |
+| [RELEASE-COMPARISON.md](Docs/Release-Comparison.md) | RC1 vs RC2 feature comparison |
 | [INSTALLATION.md](Docs/INSTALLATION.md) | Full installation, deployment and removal/cleanup guide |
 | [CONFIGURATION.md](Docs/Application-Configuration.md) | Application configuration reference |
 | [ARCHITECTURE.md](Docs/ARCHITECTURE.md) | Internal architecture and system design |
