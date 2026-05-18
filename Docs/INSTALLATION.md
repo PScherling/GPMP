@@ -25,7 +25,8 @@ This will:
 - Creates Log directory in C:\ProgramData\GpoPortal
 - Optionally trigger initial sync
 
-<img alt="image" src="Assets/app-installation.png" /><br>
+<img alt="image" src="Assets/quick-install_1.png" /><br>
+<img alt="image" src="Assets/quick-install_2.png" /><br>
 
 GPO-Portal is ready now.
 
@@ -34,7 +35,7 @@ GPO-Portal is ready now.
 ### 3. Access UI
 You can access the UI direct via the url in your favourite web browser or you execute the created desktop shortcut.
 - http://localhost:5015/
-- <img alt="image" src="Assets/desktop-icon.png" /> 
+- <img alt="image" src="Assets/desktop-shortcut.png" /> 
 
 
 
@@ -48,9 +49,9 @@ An initial sync is running after the logon. You have to run the 'Report Sync' ma
 <img alt="image" src="Assets/initial-sync.png" /><br><br>
 
 
-#### DEV MODE
-In developer builds, the application runs per default in "Read-only mode". This means, you can't make any write operations or any other changes.
-<img alt="image" src="Assets/read-only.png" /><br>
+#### Pre-Release Builds
+In **pre-release** builds, the application runs per default in "Read-only mode". This means, you can't make any write operations or any other changes, even if your user have domain-admin priviledges.
+<img alt="image" src="Assets/pre-release_write-protection.png" /><br>
 
 You can change this setting in the applications production configuration file:
 ```explorer
@@ -66,7 +67,7 @@ You need to restart the GPO-Portal service after changing the configration file 
 ```powershell
 Restart-Service GpoPortal
 ```
-<img alt="image" src="Assets/write-mode.png" /><br>
+<img alt="image" src="Assets/write-mode_enabled.png" /><br>
 
 
 
@@ -78,7 +79,7 @@ Restart-Service GpoPortal
 Run:
 
 ```powershell
-.\Uninstall-GpoPortal.ps1 -RemovePostgreSql
+.\Uninstall-GPMP.ps1 -RemovePostgreSql
 ```
 
 This will:
@@ -87,6 +88,6 @@ This will:
 - Remove desktop shortcuts
 - Uninstall PostgreSQL and clean up its data directory (if -RemovePostgreSql is specified)
 
-<img alt="image" src="Assets/uninstallation.png" />
+<img alt="image" src="Assets/uninstall.png" />
 
 ---
