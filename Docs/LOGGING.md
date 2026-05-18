@@ -9,7 +9,7 @@ C:\ProgramData\GpoPortal\Logs\
 ```
 
 Logfiles will be created daily. The naming convention is:
-```text
+```
 gpoportal-[year][month][day].log
 ```
 
