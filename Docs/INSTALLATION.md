@@ -146,7 +146,7 @@ https://gpmp-server.contoso.local:5016
 
 <br><br>
 
-### 3. Access UI
+### Access UI
 You can access GPMP either:
 - directly via web browser
 HTTP:
@@ -183,7 +183,7 @@ You can change this setting in the applications production configuration file:
 C:\Program Files\GpoPortal\appsettings.Production.json
 ```
 
-Find and set with 'Notepad++':
+Find and set:
 ```json
 "AllowWriteOperations":  true
 ```
