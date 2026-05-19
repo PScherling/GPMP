@@ -42,15 +42,6 @@ This document provides an overview of the feature evolution and architectural im
 | Cached Metadata Updates After Writes | ❌ | ✅ |
 
 
-
-### 📘 Interpretation
-
-| Symbol | Meaning |
-|---|---|
-| ✅ | Implemented |
-| ❌ | Not implemented |
-| ⚠️ | Partial implementation |
-
 ---
 
 ## 🆕 Major Additions in Nightly
