@@ -2,10 +2,9 @@
 
 The obvious part first! Before you consider using this solution, you need to setup an active-directory in the first place, like you would do to use GPMC. I will not provide any documentation how to establish that, because there are many guides out there ;)
 
+> ⚠️ The current release does not support in-place upgrades or reinstall-over-existing installations. Uninstall the existing version before installing a new package.
 
 ## 📦 Installation (Quick Start)
-
-> The current release does not support in-place upgrades or reinstall-over-existing installations. Uninstall the existing version before installing a new package.
 
 ### 1. Extract the zip package
 <img alt="image" src="Assets/unzip-package.png" />
