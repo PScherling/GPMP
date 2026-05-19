@@ -5,7 +5,7 @@ The obvious part first! Before you consider using this solution, you need to set
 
 ## 📦 Installation (Quick Start)
 
-> The NIGHTLY installer does not support in-place upgrades or reinstall-over-existing installations. Uninstall the existing version before installing a new package.
+> The current release does not support in-place upgrades or reinstall-over-existing installations. Uninstall the existing version before installing a new package.
 
 ### 1. Extract the zip package
 <img alt="image" src="Assets/unzip-package.png" />
