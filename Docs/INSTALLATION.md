@@ -6,7 +6,7 @@ The obvious part first! Before you consider using this solution, you need to set
 ## 📦 Installation (Quick Start)
 
 ### 1. Extract the zip package
-<img alt="image" src="Assets/package.png" />
+<img alt="image" src="Assets/unzip-package.png" />
 
 
 ### 2. Install the Application
@@ -18,7 +18,7 @@ Run:
 ```
 
 This will:
-- Install all needed prerequisites needed like 'RSAT-Tools' and PostgreSQL (Internet connection is needed!)
+- Install required prerequisites such as RSAT tools and PostgreSQL (Internet connection is needed!)
 - Deploy application to C:\Program Files\GpoPortal
 - Register Windows Service
 - Applies my intended DB schema with 'ApplyMigrations'
@@ -28,15 +28,140 @@ This will:
 <img alt="image" src="Assets/quick-install_1.png" /><br>
 <img alt="image" src="Assets/quick-install_2.png" /><br>
 
-GPO-Portal is ready now.
+GPMP installation completed successfully.
+
+---
+
+### HTTPS Configuration
+
+GPMP supports both HTTP and HTTPS endpoints.
+
+#### Default Behavior
+
+If HTTPS is enabled during installation and no certificate thumbprint is provided:
+
+- GPMP automatically attempts to locate an existing local certificate
+- If no suitable certificate is found:
+  - GPMP creates a self-signed certificate
+  - HTTPS is enabled automatically
+  - Browser certificate warnings may occur
+
+Self-signed certificates are intended for:
+- local testing
+- lab environments
+- proof-of-concept deployments
+
+They are **not recommended for production environments**.
+
+---
+
+### Enable HTTPS (Automatic Self-Signed Certificate)
+
+Run:
+
+```powershell
+.\Install-GPMP.ps1 -OpenFirewall -ApplyMigrations -RunInitialSyncOnStartup -InstallPrerequisites -EnableHttps
+```
+
+This automatically:
+- creates a local HTTPS certificate if needed
+- configures Kestrel HTTPS endpoint
+- enables secure browser access
+
+> ⚠️ If a self-signed certificate is used, the browser may display a certificate warning until the certificate is trusted manually or replaced with a CA-issued certificate.
+
+<img alt="image" src="Assets/quick-install_https_selfsigned_1.png" /><br>
+<img alt="image" src="Assets/quick-install_https_selfsigned_2.png" /><br>
+
+---
+
+### Trust Self-Signed Certificate (Optional)
+
+For testing environments, you can optionally trust the generated self-signed certificate:
+
+```powershell
+.\Install-GPMP.ps1 -OpenFirewall -ApplyMigrations -RunInitialSyncOnStartup -InstallPrerequisites -EnableHttps -TrustSelfSigned
+```
+
+<img alt="image" src="Assets/quick-install_https_selfsigned_3.png" /><br>
+
+This imports the generated certificate into:
+
+```text
+LocalMachine\Root
+```
+
+⚠️ **Important:**
+
+Automatically trusting self-signed certificates should only be used in:
+- **lab environments**
+- **isolated systems**
+- **internal testing**
+
+Do not use this approach in enterprise production environments.
+
+---
+
+### Recommended Production Setup
+
+For production environments, use a proper CA-issued certificate:
+
+Examples:
+- Internal Active Directory Certificate Services (AD CS)
+- Enterprise PKI
+
+Example:
+
+```powershell
+.\Install-GPMP.ps1 -OpenFirewall -ApplyMigrations -RunInitialSyncOnStartup -InstallPrerequisites -EnableHttps -CertThumbprint "‎1234567890ABCDEF1234567890ABCDEF12345678"
+```
+
+The certificate must:
+- exist in `Cert:\LocalMachine\My`
+- contain a private key
+- match the server hostname/FQDN
+- be valid and non-expired
+
+---
+
+## 🌐 Access URLs
+
+HTTP:
+```text
+http://localhost:5015
+```
+
+HTTPS:
+```text
+https://SERVERNAME:5016
+https://FQDN:5016
+```
+
+Example:
+```text
+https://gpmp-server.contoso.local:5016
+```
+
+---
 
 <br><br>
 
 ### 3. Access UI
-You can access the UI direct via the url in your favourite web browser or you execute the created desktop shortcut.
-- http://localhost:5015/
-- <img alt="image" src="Assets/desktop-shortcut.png" /> 
+You can access GPMP either:
+- directly via web browser
+HTTP:
+```text
+http://localhost:5015
+```
 
+HTTPS (if enabled):
+```text
+https://SERVERNAME:5016
+https://FQDN:5016
+```
+
+- through the automatically created desktop shortcut
+<img alt="image" src="Assets/desktop-shortcut.png" /> 
 
 
 Authentication:
