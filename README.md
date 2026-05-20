@@ -38,6 +38,8 @@ GPMP provides:
 
 ---
 
+<br>
+
 ## 🛠️ Project Status
 
 GPMP is currently in active development.
