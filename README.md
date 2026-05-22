@@ -201,7 +201,7 @@ Always test in a non-production environment before deploying into critical infra
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
-      <td>⚠️ (Not Tested)</td>
+      <td>✅</td>
       <td>⚠️ (Not Tested)</td>
     </tr>
   </tbody>
