@@ -184,6 +184,33 @@ Always test in a non-production environment before deploying into critical infra
 
 <br>
 
+## 🌐 Browser Support Matrix
+
+<table>
+  <tbody>
+    <tr>
+      <th>Browser</th>
+      <td><img width="30" height="30" alt="image" src="Docs/Assets/chrome.png" /></td>
+      <td><img width="30" height="30" alt="image" src="Docs/Assets/edge.png" /></td>
+      <td><img width="30" height="30" alt="image" src="Docs/Assets/firefox.png" /></td>
+      <td><img width="30" height="30" alt="image" src="Docs/Assets/opera.png" /></td>
+      <td><img width="30" height="30" alt="image" src="Docs/Assets/safari.png" /></td>
+    </tr>
+    <tr>
+      <th>Compatibility</th>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>⚠️ (Not Tested)</td>
+      <td>⚠️ (Not Tested)</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+<br>
+
 ## 📚 Documentation
 
 | Document | Description |
