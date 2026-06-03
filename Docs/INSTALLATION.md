@@ -181,23 +181,6 @@ An initial sync is running after the logon. You have to run the 'Report Sync' ma
 In **pre-release** builds, the application runs per default in "Read-only mode". This means, you can't make any write operations or any other changes, even if your user have domain-admin priviledges.
 <img alt="image" src="Assets/pre-release_write-protection.png" /><br>
 
-You can change this setting in the applications production configuration file:
-```explorer
-C:\Program Files\GpoPortal\appsettings.Production.json
-```
-
-Find and set:
-```json
-"AllowWriteOperations":  true
-```
-
-You need to restart the GPO-Portal service after changing the configration file in order to take effect:
-```powershell
-Restart-Service GpoPortal
-```
-<img alt="image" src="Assets/write-mode_enabled.png" /><br>
-
-
 
 ---
 
