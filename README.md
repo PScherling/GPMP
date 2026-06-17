@@ -1,10 +1,12 @@
 # Group Policy Management Portal
 
-![Release](https://img.shields.io/badge/release-NIGHTLY-orange)
-![Platform](https://img.shields.io/badge/platform-Windows%20Server-lightgrey)
-![Backend](https://img.shields.io/badge/backend-ASP.NET%20Core-blueviolet)
-![Database](https://img.shields.io/badge/database-PostgreSQL-336791)
-![Auth](https://img.shields.io/badge/auth-Windows%20Negotiate-green)
+![Phase](https://img.shields.io/badge/NIGHTLY-orange)
+![Platform](https://img.shields.io/badge/Windows%20Server-lightgrey)
+![Backend](https://img.shields.io/badge/ASP.NET%20Core-blueviolet)
+![Database](https://img.shields.io/badge/PostgreSQL-336791)
+![Auth](https://img.shields.io/badge/NTLM-green)
+![Auth](https://img.shields.io/badge/Kerberos-green)
+![AuditEngine](https://img.shields.io/badge/Audit%20Engine-blue)
 
 <img width="200px" alt="image" src="Docs/Assets/logo-simple.png" /><br>
 
