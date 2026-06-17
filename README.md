@@ -301,7 +301,7 @@ The audit engine is designed to support organizational standards, security basel
 | [INSTALLATION.md](Docs/INSTALLATION.md) | Full installation, deployment and removal/cleanup guide |
 | [CONFIGURATION.md](Docs/Application-Configuration.md) | Application configuration reference |
 | [ARCHITECTURE.md](Docs/ARCHITECTURE.md) | Internal architecture and system design |
-| [AUTHORIZATION.md](Docs/Authorization.md) | RID-based authorization model |
+| [AUTH.md](Docs/Auth.md) | Authentication & Authorization |
 | [ROADMAP.md](Docs/ROADMAP.md) | Planned features and future direction |
 | [Logging.md](Docs/LOGGING.md) | Application logging information |
 
