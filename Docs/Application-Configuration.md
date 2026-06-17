@@ -2,58 +2,64 @@
 
 ## 🧠 Configuration
 
-The main configuration for the application is stored in: **C:\Program Files\GPM-Portal\appsettings.production.json**
+Configuration is stored in:
+
+appsettings.json
 
 Example
 ```json
 {
-    "GpoPortal":  {
-                      "InitialSyncReports":  false,
-                      "AllowWriteOperations":  false,
-                      "RedirectHttp": false,
-                      "AuthorizationDomain": null,
-                      "ReadAccessGroupRids":  [
-                                                  512,
-                                                  519
-                                              ],
-                      "WriteAccessGroupRids":  [
-                                                   512
-                                               ],
-                      "ReadAccessGroupNames":  [
-
-                                               ],
-                      "WriteAccessGroupNames":  [
-
-                                                ],
-                      "RunInitialSyncOnStartup":  true
-                  },
-    "Kestrel":  {
-                    "Endpoints":  {
-                                      "Https":  {
-                                                    "Url":  "https://gpmpsrv.remedy.local:5016",
-                                                    "Certificate":  {
-                                                                        "Subject":  "gpmpsrv.remedy.local",
-                                                                        "AllowInvalid":  false,
-                                                                        "Thumbprint":  "1234567890ABCDEF1234567890ABCDEF12345678",
-                                                                        "Location":  "LocalMachine",
-                                                                        "Store":  "My"
-                                                                    }
-                                                },
-                                      "Http":  {
-                                                   "Url":  "http://localhost:5015"
-                                               }
-                                  }
-                },
-    "AllowedHosts": "*",
-    "Logging": {
-        "LogLevel": {
-          "Default": "Information",
-          "Microsoft.AspNetCore": "Warning"
-        }
-    },
-    "ConnectionStrings":  {
-                              "DefaultConnection":  null
-                          }
+  "GpoPortal": {
+    "Version": "0.0.1",
+    "ReleaseChannel": "dev",
+    "ReleaseLabel": "RC1",
+    "RedirectHttp": false,
+	"WriteExecutionMode": "ServiceAccount",
+    "AllowWriteOperations": true,
+    "RunInitialSyncOnStartup": true,
+    "InitialSyncReports": false,
+    "AuthorizationDomain": null,
+    "ReadAccessGroupRids": [512, 519],
+    "WriteAccessGroupRids": [512],  
+    "ReadAccessGroupNames": [
+        "Template-Group"
+      ],
+    "WriteAccessGroupNames": [
+      "Template-Admins"
+    ],
+  },
+  "Sync": {
+	"AutoSyncOnAccess": true,
+	"AutoSyncMinimumIntervalMinutes": 15,
+	"ReportDeltaSyncEnabled": true
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "Kestrel": {
+    "Endpoints": {
+      "Http": {
+        "Url": "gpmpsrv.remedy.local:5015"
+      },
+      "Https": {
+		        "Url": "https://gpmpsrv.remedy.local:5016",
+		        "Certificate": {
+			        "Subject": "gpmpsrv.remedy.local",
+			        "Store": "My",
+			        "Location": "LocalMachine",
+			        "Thumbprint": "1234567890ABCDEF1234567890ABCDEF12345678",
+			        "AllowInvalid": false
+		        }
+	        }
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings":  {
+        "DefaultConnection":  null
+    }
 }
 
 ```
