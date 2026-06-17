@@ -6,244 +6,171 @@ This document provides an overview of the feature evolution and architectural im
 
 ## 📈 Release Comparison
 
-| Feature | DEV RC1 | Nightly RC1 |
-|---|---|---|
-| OU Tree Visualization | ✅ | ✅ |
-| GPO Object Search | ✅ | ✅ |
-| GPO HTML Report Rendering | ✅ | ✅ |
-| Inheritance Visualization | ✅ | ✅ |
-| Windows Authentication | ✅ | ✅ |
-| RID-based Authorization | ✅ | ✅ |
-| Initial Startup Sync | ✅ | ✅ |
-| Sync History | ✅ | ✅ |
-| PostgreSQL Backend | ✅ | ✅ |
-| Windows Service Support | ✅ | ✅ |
-| Self-contained Deployment | ✅ | ✅ |
-| GPO Status Changes | ❌ | ✅ |
-| Create GPO Workflow | ❌ | ✅ |
-| Delete GPO Workflow | ❌ | ✅ |
-| Link GPO to OU | ❌ | ✅ |
-| Remove GPO Links | ❌ | ✅ |
-| GPO Link Enable / Disable | ❌ | ✅ |
-| GPO Enforcement Toggle | ❌ | ✅ |
-| Interactive Badge Actions | ❌ | ✅ |
-| Modal-based Write Operations | ❌ | ✅ |
-| Keyboard-aware Modal UX | ❌ | ✅ |
-| Real-time UI Updates | ❌ | ✅ |
-| Live Cache Synchronization | ❌ | ✅ |
-| Write-aware UI Controls | ❌ | ✅ |
-| Confirmation Dialogs | ❌ | ✅ |
-| Controlled Write Architecture | ❌ | ✅ |
-| Dynamic Badge State Refresh | ❌ | ✅ |
-| Interactive Link Management | ❌ | ✅ |
-| Split Stylesheet Architecture | ❌ | ✅ |
-| Optimistic UI Refresh Strategy | ❌ | ✅ |
-| Advanced Write UX | ❌ | ✅ |
-| Cached Metadata Updates After Writes | ❌ | ✅ |
+| Capability                   | RC 1 | RC 2 | RC 3 |
+| ---------------------------- | ------- | ------- | ------- |
+| Browser-based Administration | ✅       | ✅       | ✅       |
+| OU Tree Visualization        | ✅       | ✅       | ✅       |
+| GPO Discovery                | ✅       | ✅       | ✅       |
+| GPO Report Rendering         | ✅       | ✅       | ✅       |
+| Inheritance Visualization    | ✅       | ✅       | ✅       |
+| Search Capabilities          | ✅       | ✅       | ✅       |
+| Windows Authentication       | ✅       | ✅       | ✅       |
+| RID-based Authorization      | ✅       | ✅       | ✅       |
+| PostgreSQL Backend           | ✅       | ✅       | ✅       |
+| Synchronization Engine       | ✅       | ✅       | ✅       |
+| Windows Service Support      | ✅       | ✅       | ✅       |
+| Release-aware Deployment     | ✅       | ✅       | ✅       |
+| Live Write Operations        | ❌       | ✅       | ✅       |
+| GPO Creation                 | ❌       | ✅       | ✅       |
+| GPO Deletion                 | ❌       | ✅       | ✅       |
+| GPO Status Management        | ❌       | ✅       | ✅       |
+| GPO Link Management          | ❌       | ✅       | ✅       |
+| Enforcement Management       | ❌       | ✅       | ✅       |
+| Write-aware UI               | ❌       | ✅       | ✅       |
+| Enterprise-safe Write Model  | ❌       | ✅       | ✅       |
+| Real-time UI Synchronization | ❌       | ✅       | ✅       |
+| Unknown GPO Owner Repair Feature | ❌       | ❌       | ✅       |
+| Compliance Auditing          | ❌       | ❌       | 🚧      |
+| Audit Rule Framework         | ❌       | ❌       | 🚧      |
+| Audit Findings Framework     | ❌       | ❌       | 🚧      |
+| Normalization Framework      | ❌       | ❌       | 🚧      |
+| Security Baseline Validation | ❌       | ❌       | 🚧      |
+| Compliance Reporting         | ❌       | ❌       | 🚧      |
+| Operational Intelligence     | ❌       | ❌       | 🚧      |
 
 
 ---
 
-## 🆕 Major Additions in Nightly
+# 🧩 Phase 1 — Visibility
 
-**Nightly RC1** introduces the first interactive write operations for GPMP.
+Phase 1 established the foundation of the platform.
 
-The platform evolves from a visualization-focused portal into a browser-based operational management platform for Microsoft Group Policy environments.
+The focus was providing visibility into Active Directory and Group Policy environments through a modern web interface.
 
----
+## Delivered Capabilities
 
-## 🧩 New Write Operations
+### Group Policy Visibility
 
-### GPO Object Management
+* Organizational Unit tree
+* Group Policy discovery
+* GPO details
+* HTML report rendering
+* Inheritance visualization
+* Search functionality
 
-#### Create new GPOs
+### Security & Access Control
 
-<img alt="Create GPO" src="Assets/gpo-create.png" />
-<br><br>
+* Windows Authentication
+* RID-based Authorization
+* Read / Write separation
+* Global write protection
 
-#### Delete existing GPOs
+### Platform Foundation
 
-<img alt="Delete GPO" src="Assets/gpo-delete.png" />
-<br><br>
-
-#### Change GPO Status
-
-Supported states:
-
-- All settings enabled
-- User configuration disabled
-- Computer configuration disabled
-- Entire GPO disabled
-
-<img alt="Change GPO Status" src="Assets/change-gposettings.png" />
-<br><br>
-
----
-
-### GPO Link Management
-
-#### Link GPOs to OUs
-
-<img alt="Link GPO" src="Assets/link-gpo.png" />
-<br><br>
-
-#### Interactive Quick-Action Badges
-
-<img alt="Quick Badges" src="Assets/quick-badges.png" />
-<br><br>
-
-#### Enable / Disable GPO Links
-
-<img alt="Disable Link" src="Assets/disable-link.png" />
-<br><br>
-
-#### Enforce / Remove Enforcement
-
-<img alt="Enforce GPO" src="Assets/enforce-gpo.png" />
-<br><br>
-
-#### Remove GPO Links from OUs
-
-<img alt="Remove Linked GPO" src="Assets/remove-linked-gpo.png" />
-<br><br>
-
-#### Live UI Synchronization
-
-After write operations, the interface updates immediately without requiring manual reloads.
+* ASP.NET Core
+* PostgreSQL
+* Entity Framework Core
+* PowerShell integration
+* Synchronization engine
+* Windows Service support
 
 ---
 
-## 🖥️ Modernized Operational Workflow
+# 🧩 Phase 2 — Administration
 
-**Nightly RC1** introduces a significantly more modern operational workflow inspired by contemporary web administration platforms.
+Phase 2 transformed Sensei from a visibility platform into an administration platform.
 
-Implemented improvements include:
+The focus shifted from viewing Group Policy to safely managing it.
 
-- modal-based write dialogs
-- interactive badge operations
-- keyboard-aware workflows
-- context-sensitive controls
-- live inheritance updates
-- dynamic UI refresh behavior
-- write-aware interface rendering
-- operational state visibility
+## Delivered Capabilities
 
-The platform now behaves more like a modern operational management system rather than a static administration console.
+### GPO Management
 
----
+* Create GPO
+* Delete GPO
+* Modify GPO Status
+* Enable / Disable User Configuration
+* Enable / Disable Computer Configuration
 
-## ⚡ UI & UX Improvements
+### Link Management
 
-**Nightly RC1** introduces:
+* Create Links
+* Remove Links
+* Enable / Disable Links
+* Enforcement Management
 
-- real-time badge updates
-- live inheritance refresh
-- dynamic write-state rendering
-- context-sensitive operations
-- improved action visibility
-- interactive modal workflows
-- cleaner operational separation
+### Enterprise Safety
 
----
+* Write-aware UI
+* Confirmation dialogs
+* Authorization-aware controls
+* Global write mode
+* Immediate synchronization
 
-## 🧠 Architectural Improvements
+### Modern Administration UX
 
-## Cache Synchronization
+* Quick action badges
+* Modal workflows
+* Dynamic UI updates
+* Keyboard-aware dialogs
+* Real-time state refresh
 
-**Nightly RC1** introduces live cache synchronization after write operations.
+### Architecture Improvements
 
-Affected objects are updated immediately after successful operations to keep the UI synchronized with Active Directory state.
+* Live Active Directory write operations
+* Cache mutation after writes
+* Separation of:
 
----
-
-### Operational Separation
-
-The platform now clearly separates:
-
-- GPO object state
-- GPO link state
-- inheritance behavior
-- authorization capability
-- operational visibility
-
-This separation improves operational clarity and reduces ambiguity.
+  * Object State
+  * Link State
+  * Inheritance State
+  * Authorization State
 
 ---
 
-### Stylesheet Architecture
+# 🧩 Phase 3 — Audit & Compliance
 
-The frontend styling was split into focused stylesheet components:
+Phase 3 extends the platform beyond administration and introduces compliance, auditing and operational intelligence.
 
-| File | Purpose |
-|---|---|
-| `stylesheet_main.css` | Core layout, panels and report rendering |
-| `stylesheet_toolbar.css` | Toolbar, sync state and authorization display |
-| `stylesheet_modal.css` | Modal dialogs and write workflows |
-| `stylesheet_misc.css` | Utility classes, badges and reusable UI elements |
+## Current Focus Areas
 
----
+### Audit Framework
 
-## 📘 Important Terminology
+* Data-driven audit rules
+* Data-driven audit findings
+* Audit result persistence
+* Compliance reporting
 
-GPMP differentiates between several operational concepts:
+### Normalization Framework
 
-| Type | Meaning |
-|---|---|
-| GPO Status | Object-level configuration state |
-| GPO Link State | Whether a GPO is linked to a container |
-| Enforcement | Whether inheritance blocking is overridden |
-| Link Scope | Whether a link is direct or inherited |
+* Normalized configuration model
+* Alias resolution
+* Category mappings
+* Centralized normalization services
 
-This separation mirrors native Microsoft Group Policy behavior.
+### Security Analysis
 
----
+* Microsoft security baseline validation
+* Compliance assessment
+* Future CIS benchmark support
 
-## 🧩 Core Features Available Since DEV RC1
+### Operational Intelligence
 
-### Read Operations
-
-- Active Directory OU tree visualization
-- GPO object browsing
-- inheritance visualization
-- HTML report rendering
-- full-text GPO search
-- search highlighting
-- link state visibility
+* Configuration analysis
+* Administrative diagnostics
+* Compliance visibility
+* Audit insights
 
 ---
 
-### Security & Authorization
+# 🚀 Architectural Progression
 
-- Windows Authentication
-- Kerberos / NTLM support
-- RID-based authorization
-- read/write separation
-- global write protection
+The evolution of Sensei can be summarized in three stages:
 
----
+| Phase   | Primary Goal       |
+| ------- | ------------------ |
+| Phase 1 | Visibility         |
+| Phase 2 | Administration     |
+| Phase 3 | Audit & Compliance |
 
-### Backend Platform
-
-- ASP.NET Core (.NET 10)
-- PostgreSQL
-- Entity Framework Core
-- PowerShell integration
-
----
-
-### Synchronization Features
-
-- manual synchronization
-- startup synchronization
-- sync history tracking
-- report synchronization
-
----
-
-### Deployment Features
-
-- self-contained publishing
-- Windows Service support
-- automated prerequisite installation
-- PostgreSQL integration
-- deployment scripting
+The long-term vision is to continue evolving the platform toward operational intelligence and enterprise automation while remaining fully compatible with Microsoft's native Group Policy infrastructure.
