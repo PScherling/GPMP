@@ -2,7 +2,7 @@
 
 ## 🏗️ High-Level Architecture
 
-Sensei follows a layered architecture designed to separate presentation, business logic, data persistence and Active Directory interaction.
+GPMP follows a layered architecture designed to separate presentation, business logic, data persistence and Active Directory interaction.
 
 ```text
 ┌─────────────────────────────┐
@@ -84,7 +84,7 @@ The API contains no direct Group Policy logic and instead delegates infrastructu
 
 ### PostgreSQL Database
 
-Sensei uses PostgreSQL as its operational data store.
+GPMP uses PostgreSQL as its operational data store.
 
 The database persists:
 
@@ -115,13 +115,13 @@ Responsibilities include:
 * Link management
 * Active Directory interaction
 
-This layer allows Sensei to remain fully compatible with Microsoft's native Group Policy infrastructure.
+This layer allows GPMP to remain fully compatible with Microsoft's native Group Policy infrastructure.
 
 ---
 
 ## 🔐 Authentication & Authorization
 
-Sensei uses Windows Integrated Authentication.
+GPMP uses Windows Integrated Authentication.
 
 Authorization is separated into:
 
@@ -136,7 +136,7 @@ This allows organizations to delegate administrative permissions without modifyi
 
 ## 🔄 Synchronization Architecture
 
-Sensei operates on a cache-first architecture.
+GPMP operates on a cache-first architecture.
 
 Infrastructure data is synchronized into PostgreSQL and consumed by the user interface.
 
@@ -159,7 +159,7 @@ Synchronization currently supports:
 
 ## 🛡️ Write Architecture Philosophy
 
-Sensei follows a deliberately controlled enterprise write model.
+GPMP follows a deliberately controlled enterprise write model.
 
 Write operations are:
 
@@ -229,4 +229,4 @@ Phase 2 introduced controlled administration.
 
 Phase 3 introduces compliance, auditing and operational intelligence.
 
-The long-term goal is to evolve Sensei into a unified operational control plane for Active Directory environments while remaining fully compatible with Microsoft's native infrastructure.
+The long-term goal is to evolve GPMP into a unified operational control plane for Active Directory environments while remaining fully compatible with Microsoft's native infrastructure.
