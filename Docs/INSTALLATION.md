@@ -1,16 +1,155 @@
-# Installation Instructions
+# Production Deployment Considerations
 
-The obvious part first! Before you consider using this solution, you need to setup an active-directory in the first place, like you would do to use GPMC. I will not provide any documentation how to establish that, because there are many guides out there ;)
+For evaluation environments the default installation is sufficient.
 
-> ⚠️ The current release does not support in-place upgrades or reinstall-over-existing installations. Uninstall the existing version before installing a new package.
+For production deployments it is strongly recommended to use a dedicated Active Directory service account.
+
+Example:
+
+DOMAIN\gpmp.svc
+
+Benefits:
+
+- Proper Active Directory auditing
+- Delegated administration
+- Predictable write permissions
+- Kerberos compatibility
+- Enterprise security compliance
+
+The service account should only receive the permissions required for the desired administrative operations.
+
+---
+
+## 🔐 Windows Authentication
+
+GPMP uses Windows Integrated Authentication.
+
+Supported authentication methods:
+
+- Kerberos (preferred)
+- NTLM (fallback)
+
+No local user accounts exist within the application.
+
+Authentication is performed directly against Active Directory.
+
+---
+
+## 🌐 Kerberos & SPN Configuration
+
+When hosting GPMP under a dedicated service account, HTTP Service Principal Names (SPNs) may be required.
+
+Example:
+
+setspn -Q HTTP/servername
+
+Typical SPNs:
+
+HTTP/servername
+HTTP/servername.domain.local
+
+Without valid SPNs:
+
+- Kerberos authentication may fail
+- Browser authentication may fall back to NTLM
+- Authorization behavior may become inconsistent
+
+Recent installer versions automatically validate and register required SPNs.
+
+---
+
+## 🔑 Service Account Permissions
+
+For environments using write operations, the service account must have appropriate Active Directory permissions.
+
+Examples:
+
+- Create GPO
+- Delete GPO
+- Link GPOs
+- Modify GPO status
+- Modify enforcement state
+
+Required permissions depend on the operations that should be available.
+
+Read-only deployments do not require delegated write permissions.
+
+---
+
+## ⚙️ Log On As A Service
+
+GPMP requires the Windows right:
+
+Log on as a service
+
+Recent installer versions automatically assign this right to the configured service account.
+
+No manual Local Security Policy configuration should be required.
+
+---
+
+## 🔍 Startup Validation
+
+During application startup, GPMP validates critical configuration values.
+
+Examples include:
+
+- Service identity
+- Authentication configuration
+- Authorization configuration
+- PowerShell script configuration
+- Operational mode
+
+Validation results are written to:
+
+C:\ProgramData\GpoPortal\Logs\
+
+---
 
 <br>
+
+# Installation Instructions
+
+The obvious part first! Before you consider using this solution, you need to setup an active-directory in the first place, like you would do to use GPMC. I will not provide any documentation how to establish that, because tehre are many guides out there ;)
+
 
 ## 📦 Installation (Quick Start)
 
 ### 1. Extract the zip package
-<img alt="image" src="Assets/unzip-package.png" />
+<img alt="image" src="Assets/zip-package.png" />
 
+
+### 2. Prerequisites Installation
+
+Open PowerShell with administrative rights and go into the this directory.
+
+```powershell
+cd "D:\Temp\GPO-Portal\GPMP-dev-RC-2-v0.0.9\tools"
+```
+
+<img alt="image" src="Assets/set-location.png" />
+
+
+#### Installation of the database (Internet Connection required!)
+Run:
+
+```powershell
+.\Install-GPMP-Prereqs.ps1 -InstallPostgres -CreateDatabase
+```
+
+This will:
+- Install required RSAT features
+- Download and install PostgreSQL with dependencies
+- Create database & user
+- Validate connectivity
+
+<img alt="image" src="Assets/prereq-installation.png" /><br><br>
+
+If you don't have an internet connection, you have to provide the postgresql installer file. e.g.:
+```powershell
+.\Install-GPMP-Prereqs.ps1 -InstallPostgres -CreateDatabase -PostgresInstallerPath ".\tools\postgresql-installer.exe" 
+```
+<br>
 
 ### 2. Install the Application
 
@@ -21,150 +160,23 @@ Run:
 ```
 
 This will:
-- Install required prerequisites such as RSAT tools and PostgreSQL (Internet connection is needed!)
 - Deploy application to C:\Program Files\GpoPortal
 - Register Windows Service
-- Applies my intended DB schema with 'ApplyMigrations'
+- Apply DB schema
 - Creates Log directory in C:\ProgramData\GpoPortal
 - Optionally trigger initial sync
 
-<img alt="image" src="Assets/quick-install_1.png" /><br>
-<img alt="image" src="Assets/quick-install_2.png" /><br>
+<img alt="image" src="Assets/app-installation.png" /><br>
 
-GPMP installation completed successfully.
-
----
-
-### HTTPS Configuration
-
-GPMP supports both HTTP and HTTPS endpoints.
-
-#### Default Behavior
-
-If HTTPS is enabled during installation and no certificate thumbprint is provided:
-
-- GPMP automatically attempts to locate an existing local certificate
-- If no suitable certificate is found:
-  - GPMP creates a self-signed certificate
-  - HTTPS is enabled automatically
-  - Browser certificate warnings may occur
-
-Self-signed certificates are intended for:
-- local testing
-- lab environments
-- proof-of-concept deployments
-
-They are **not recommended for production environments**.
-
----
-
-### Enable HTTPS (Automatic Self-Signed Certificate)
-
-Run:
-
-```powershell
-.\Install-GPMP.ps1 -OpenFirewall -ApplyMigrations -RunInitialSyncOnStartup -InstallPrerequisites -EnableHttps
-```
-
-This automatically:
-- creates a local HTTPS certificate if needed
-- configures Kestrel HTTPS endpoint
-- enables secure browser access
-
-> ⚠️ If a self-signed certificate is used, the browser may display a certificate warning until the certificate is trusted manually or replaced with a CA-issued certificate.
-
-<img alt="image" src="Assets/quick-install_https_selfsigned_1.png" /><br>
-<img alt="image" src="Assets/quick-install_https_selfsigned_2.png" /><br>
-
----
-
-### Trust Self-Signed Certificate (Optional)
-
-For testing environments, you can optionally trust the generated self-signed certificate:
-
-```powershell
-.\Install-GPMP.ps1 -OpenFirewall -ApplyMigrations -RunInitialSyncOnStartup -InstallPrerequisites -EnableHttps -TrustSelfSigned
-```
-
-<img alt="image" src="Assets/quick-install_https_selfsigned_3.png" /><br>
-
-This imports the generated certificate into:
-
-```text
-LocalMachine\Root
-```
-
-⚠️ **Important:**
-
-Automatically trusting self-signed certificates should only be used in:
-- **lab environments**
-- **isolated systems**
-- **internal testing**
-
-Do not use this approach in enterprise production environments.
-
----
-
-### Recommended Production Setup
-
-For production environments, use a proper CA-issued certificate:
-
-Examples:
-- Internal Active Directory Certificate Services (AD CS)
-- Enterprise PKI
-
-Example:
-
-```powershell
-.\Install-GPMP.ps1 -OpenFirewall -ApplyMigrations -RunInitialSyncOnStartup -InstallPrerequisites -EnableHttps -CertThumbprint "‎1234567890ABCDEF1234567890ABCDEF12345678"
-```
-
-The certificate must:
-- exist in `Cert:\LocalMachine\My`
-- contain a private key
-- match the server hostname/FQDN
-- be valid and non-expired
-
----
-
-## 🌐 Access URLs
-
-HTTP:
-```text
-http://localhost:5015
-```
-
-HTTPS:
-```text
-https://SERVERNAME:5016
-https://FQDN:5016
-```
-
-Example:
-```text
-https://gpmp-server.contoso.local:5016
-```
-
----
+GPO-Portal is ready now.
 
 <br><br>
 
-### Access UI
-You can access GPMP either:
-- directly via web browser
-HTTP:
-```text
-http://localhost:5015
-```
+### 3. Access UI
+You can access the UI direct via the url in your favourite web browser or you execute the created desktop shortcut.
+- http://localhost:5015/
+- <img alt="image" src="Assets/desktop-icon.png" /> 
 
-HTTPS (if enabled):
-```text
-https://SERVERNAME:5016
-https://FQDN:5016
-```
-
-- through the automatically created desktop shortcut
-<img alt="image" src="Assets/desktop-shortcut.png" /> 
 
 
 Authentication:
@@ -177,9 +189,26 @@ An initial sync is running after the logon. You have to run the 'Report Sync' ma
 <img alt="image" src="Assets/initial-sync.png" /><br><br>
 
 
-#### Pre-Release Builds
-In **pre-release** builds, the application runs per default in "Read-only mode". This means, you can't make any write operations or any other changes, even if your user have domain-admin priviledges.
-<img alt="image" src="Assets/pre-release_write-protection.png" /><br>
+#### DEV MODE
+In developer builds, the application runs per default in "Read-only mode". This means, you can't make any write operations or any other changes.
+<img alt="image" src="Assets/read-only.png" /><br>
+
+You can change this setting in the applications production configuration file:
+```explorer
+C:\Program Files\GpoPortal\appsettings.Production.json
+```
+
+Find and set with 'Notepad++':
+```json
+"AllowWriteOperations":  true
+```
+
+You need to restart the gpo-portal service after changing the configration file in order to take effect:
+```powershell
+Restart-Service GpoPortal
+```
+<img alt="image" src="Assets/write-mode.png" /><br>
+
 
 
 ---
@@ -199,6 +228,35 @@ This will:
 - Remove desktop shortcuts
 - Uninstall PostgreSQL and clean up its data directory (if -RemovePostgreSql is specified)
 
-<img alt="image" src="Assets/uninstall.png" />
+<img alt="image" src="Assets/uninstallation.png" />
 
 ---
+
+## 🚨 Troubleshooting
+
+### Authentication Fails
+
+Verify:
+
+- Browser Integrated Authentication settings
+- Service status
+- SPN registration
+
+### Access Denied During Write Operations
+
+Verify:
+
+- Service account permissions
+- Group Policy delegation
+- Write authorization groups
+
+### Service Will Not Start
+
+Verify:
+
+- Service account credentials
+- Log on as a service rights
+- Configuration files
+
+
+
