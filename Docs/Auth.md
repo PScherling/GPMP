@@ -21,7 +21,7 @@ while maintaining secure-by-default behavior.
 
 # 🔐 Authentication Model
 
-Sensei uses Windows Integrated Authentication through ASP.NET Core Negotiate Authentication.
+GPMP uses Windows Integrated Authentication through ASP.NET Core Negotiate Authentication.
 
 Supported authentication methods:
 
@@ -93,12 +93,12 @@ Although LocalSystem has extensive local privileges, it does not automatically p
 
 # 🛠️ Service Account Architecture
 
-To support enterprise write operations, Sensei now runs under a dedicated domain service account.
+To support enterprise write operations, GPMP now runs under a dedicated domain service account.
 
 Example:
 
 ```text
-DOMAIN\svc-sensei
+DOMAIN\svc-GPMP
 ```
 
 Benefits:
@@ -114,7 +114,7 @@ All PowerShell operations execute using the service account identity.
 
 # 🌐 Kerberos & SPN Requirements
 
-When hosting Sensei as a Windows Service using Windows Authentication, Kerberos requires Service Principal Names (SPNs).
+When hosting GPMP as a Windows Service using Windows Authentication, Kerberos requires Service Principal Names (SPNs).
 
 Required examples:
 
@@ -206,7 +206,7 @@ Application startup logs contain detailed diagnostic information.
 
 # 🎯 Result
 
-This milestone transformed Sensei from a development-hosted application into a production-ready Windows Service platform.
+This milestone transformed GPMP from a development-hosted application into a production-ready Windows Service platform.
 
 The platform now supports:
 
