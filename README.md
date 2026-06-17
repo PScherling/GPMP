@@ -44,18 +44,20 @@ GPMP provides:
 
 ## 🛠️ Project Status
 
-GPMP is currently in active development.
+GPMP is currently in active development and approaching the next major NIGHTLY milestone release.
 
-The current NIGHTLY builds already support:
+The platform has evolved beyond a traditional Group Policy viewer and now provides:
 
-- controlled live write operations
-- interactive inheritance management
-- reusable modal-driven workflows
-- enterprise-oriented authorization concepts
-- live synchronization architecture
-- browser-based operational management
+- Browser-based Group Policy administration
+- Controlled Active Directory write operations
+- Enterprise-oriented authorization concepts
+- Interactive inheritance visualization
+- Domain audit export generation
+- Compliance baseline evaluation
+- Normalization-driven audit analysis
+- Rule-pack based compliance architecture
 
-The project is evolving toward a modern operational platform for enterprise Group Policy management.
+The current NIGHTLY builds are fully functional and actively used for real-world testing and validation.
 
 ---
 
@@ -63,46 +65,60 @@ The project is evolving toward a modern operational platform for enterprise Grou
 
 # ✨ Current Features
 
-<br>
-
-## Read Operations
+## Group Policy Management
 
 - Browse Active Directory OU structures
-- View directly linked and inherited GPOs
-- Render native GPO HTML reports
-- Full-text search across GPOs
-- View inheritance and enforcement state
-- Live link state visibility
-- Search highlighting and match detection
+- View linked and inherited GPOs
+- Full-text GPO search
+- Render native GPO reports
+- Interactive inheritance visualization
+- Link visibility tree views
+- Live synchronization
 
-<br>
+## Administrative Operations
 
-## Write Operations (Only in 'Write-Mode')
-
-- Change GPO status
-- Create new GPOs
-- Delete existing GPOs
+- Create GPOs
+- Delete GPOs
+- Rename GPOs
+- Enable / Disable GPOs
 - Link GPOs to OUs
 - Remove GPO links
-- Enable / disable links
-- Enforce / remove enforcement
-- Live cache synchronization after changes
+- Enable / Disable links
+- Enforce / Remove enforcement
+- Immediate cache synchronization
 
-<br>
+## Authorization & Safety
+
+- Windows Authentication
+- Kerberos / NTLM support
+- RID-based authorization
+- Read-only mode
+- Write-mode separation
+- Confirmation protected operations
+- Safe-by-default deployment model
+
+## Audit & Compliance
+
+- Full domain audit export packages
+- HTML audit reports
+- CSV export generation
+- Parser framework
+- Normalization engine
+- Rule-pack architecture
+- Compliance baseline evaluation
+- Findings engine
+- Baseline exception support
 
 ## Platform Features
 
 - ASP.NET Core (.NET 10)
-- PostgreSQL backend
-- Windows Authentication (Negotiate / Kerberos / NTLM)
-- RID-based authorization
-- Self-contained deployment support
-- PowerShell integration
-- Startup synchronization
+- PostgreSQL
+- Windows Service support
+- Self-contained deployment
+- HTTPS support
+- Initial synchronization
 - Sync history tracking
-- Modal-driven operational workflows
-- Split stylesheet architecture
-- Publish-ready release packaging
+- PowerShell integration
 
 ---
 
@@ -110,18 +126,20 @@ The project is evolving toward a modern operational platform for enterprise Grou
 
 # ❔ Why GPMP?
 
-Classic GPMC is powerful, but operationally outdated.
+Microsoft's Group Policy infrastructure remains one of the most powerful configuration management systems available for Windows environments.
 
-GPMP modernizes Group Policy management through:
+However, the traditional GPMC experience has changed very little over the last decade.
 
-- browser-based administration
-- live operational workflows
-- interactive inheritance visibility
-- modern UI/UX concepts
-- centralized metadata architecture
-- controlled write operations
+GPMP modernizes Group Policy administration by introducing:
 
-without replacing the underlying Microsoft Group Policy infrastructure.
+- Browser-based management
+- Interactive visualization
+- Safe operational workflows
+- Enterprise authorization concepts
+- Audit and compliance capabilities
+- Modern deployment architecture
+
+while continuing to rely entirely on Microsoft's native Group Policy infrastructure.
 
 ---
 
@@ -131,19 +149,32 @@ without replacing the underlying Microsoft Group Policy infrastructure.
 
 | Capability | Classic GPMC | GPMP |
 |---|---|---|
-| MMC-based UI | ✅ | ❌ |
-| Modern Web UI | ❌ | ✅ |
+| MMC-based UI                 | ✅ | ❌ |
+| Modern Web UI                | ❌ | ✅ |
 | Browser-based Administration | ❌ | ✅ |
 | Interactive Inheritance Visualization | ⚠️ Limited | ✅ |
-| Full-text GPO Search | ❌ | ✅ |
-| Real-time UI Updates | ❌ | ✅ |
-| Live Write Operations | ⚠️ Legacy Workflow | ✅ |
-| Modal-driven Operations | ❌ | ✅ |
+| Full-text GPO Search         | ❌ | ✅ |
+| Real-time UI Updates         | ❌ | ✅ |
+| Live Write Operations        | ⚠️ Legacy Workflow | ✅ |
+| Modal-driven Operations      | ❌ | ✅ |
 | Cached Metadata Architecture | ❌ | ✅ |
 | Instant Link State Visibility | ❌ | ✅ |
-| Interactive Badge Actions | ❌ | ✅ |
+| Interactive Badge Actions    | ❌    | ✅ |
 | Separation of Object / Link / Inheritance State | ⚠️ Partial | ✅ |
-| Modern UX Concepts | ❌ | ✅ |
+| Modern UX Concepts           | ❌    | ✅ |
+| Browser-based Administration | ❌    | ✅    |
+| Windows Authentication       | ⚠️   | ✅    |
+| Full-text Search             | ❌    | ✅    |
+| Inheritance Visualization    | ⚠️   | ✅    |
+| Live Synchronization         | ❌    | ✅    |
+| Domain Audit Export          | ❌    | ✅    |
+| Compliance Baselines         | ❌    | ✅    |
+| Rule Pack Architecture       | ❌    | ✅    |
+| Normalization Engine         | ❌    | ✅    |
+| Findings Engine              | ❌    | ✅    |
+| Windows Service Deployment   | ❌    | ✅    |
+| PostgreSQL Metadata Cache    | ❌    | ✅    |
+
 
 ---
 
@@ -186,6 +217,34 @@ Always test in a non-production environment before deploying into critical infra
 
 <br>
 
+## 🏗️ Architecture Highlights
+
+GPMP is built around a cache-driven architecture.
+
+Core components:
+
+- ASP.NET Core (.NET 10)
+- PostgreSQL Metadata Cache
+- PowerShell Execution Layer
+- Active Directory Integration
+- Group Policy Management API
+- Synchronization Engine
+- Audit & Compliance Engine
+
+The platform intentionally separates:
+
+- Object State
+- Link State
+- Inheritance State
+- Authorization State
+- Operational State
+
+to provide safer and more predictable administration workflows.
+
+---
+
+<br>
+
 ## 🌐 Browser Support Matrix
 
 <table>
@@ -208,6 +267,27 @@ Always test in a non-production environment before deploying into critical infra
     </tr>
   </tbody>
 </table>
+
+---
+
+<br>
+
+## 🔍 Audit & Compliance Engine
+
+GPMP includes an integrated audit and compliance platform capable of evaluating Group Policy configurations against reusable compliance baselines.
+
+Features include:
+
+- Parser-based setting extraction
+- Normalized configuration mapping
+- JSON rule packs
+- Baseline evaluation
+- Findings generation
+- Compliance exceptions
+- HTML export packages
+- CSV export packages
+
+The audit engine is designed to support organizational standards, security baselines and future compliance frameworks.
 
 ---
 
