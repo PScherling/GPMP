@@ -1,160 +1,232 @@
-# Architecture
+# Application Architecture
 
 ## 🏗️ High-Level Architecture
 
-GPMP follows a layered architecture designed for:
-
-- browser-based administration
-- centralized metadata management
-- controlled write operations
-- Active Directory integration
-- operational safety
-
----
-
-## 📐 Architecture Flow
+Sensei follows a layered architecture designed to separate presentation, business logic, data persistence and Active Directory interaction.
 
 ```text
-[ Browser UI ]
-
-        ↓
-
-[ ASP.NET Core API ]
-
-        ↓
-
-[ PostgreSQL Database ]
-
-        ↓
-
-[ PowerShell Integration Layer ]
-
-        ↓
-
-[ Active Directory / GPMC ]
+┌─────────────────────────────┐
+│         Browser UI          │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│      ASP.NET Core API       │
+│                             │
+│ • Authentication            │
+│ • Authorization             │
+│ • GPO Management            │
+│ • Audit Engine              │
+│ • Synchronization Services  │
+│ • Normalization Services    │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│      PostgreSQL Database    │
+│                             │
+│ • Cached GPO Metadata       │
+│ • Audit Results             │
+│ • Audit Rules               │
+│ • Audit Findings            │
+│ • Normalization Catalog     │
+│ • Application Configuration │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│   PowerShell Execution      │
+│          Layer              │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│ Active Directory / GPMC     │
+│ Windows Infrastructure      │
+└─────────────────────────────┘
 ```
 
 ---
 
-## 🧩 Component Overview
+## 🧩 Core Components
 
-### Browser UI
+### Web UI
 
-The frontend provides a modern web-based administration experience for Group Policy environments.
+The browser-based frontend provides a modern administrative interface for:
 
-Responsibilities include:
+* Group Policy management
+* Inheritance visualization
+* Audit visibility
+* Compliance reporting
+* Operational workflows
 
-- OU tree rendering
-- inheritance visualization
-- GPO search
-- modal-driven operational workflows
-- write-aware UI rendering
-- live state updates after operations
+The frontend communicates exclusively through the ASP.NET Core API.
 
-The frontend communicates exclusively through the REST API layer.
-
-<br>
+---
 
 ### ASP.NET Core API
 
-The backend API acts as the central orchestration layer.
+The API acts as the central orchestration layer.
 
 Responsibilities include:
 
-- authentication & authorization
-- API endpoints
-- write validation
-- operational safety controls
-- cache synchronization
-- database interaction
-- PowerShell execution control
+* Authentication
+* Authorization
+* Business logic
+* Audit processing
+* Synchronization workflows
+* Configuration management
+* PowerShell orchestration
 
-The API separates read and write responsibilities internally to support safer operational workflows.
+The API contains no direct Group Policy logic and instead delegates infrastructure operations to dedicated PowerShell execution services.
 
-<br>
+---
 
 ### PostgreSQL Database
 
-GPMP uses PostgreSQL as a centralized metadata cache.
+Sensei uses PostgreSQL as its operational data store.
 
-The database stores:
+The database persists:
 
-- GPO metadata
-- OU information
-- inheritance relationships
-- report content
-- synchronization state
-- operational metadata
+* Cached Active Directory information
+* Cached Group Policy information
+* Audit results
+* Audit findings
+* Audit rules
+* Normalization catalogs
+* Application configuration
+* Operational metadata
 
-Active Directory remains the authoritative source of truth.
+The database is considered the application's source of operational truth.
 
-The database is designed to improve:
+---
 
-- UI responsiveness
-- searching
-- filtering
-- operational visibility
-- synchronization efficiency
+### PowerShell Execution Layer
 
-<br>
-
-### PowerShell Integration Layer
-
-GPMP uses controlled PowerShell execution for interaction with Microsoft Group Policy infrastructure.
+PowerShell serves as the infrastructure integration layer.
 
 Responsibilities include:
 
-- GPO synchronization
-- report generation
-- write operations
-- inheritance discovery
-- Active Directory integration
+* GPO synchronization
+* OU synchronization
+* Inheritance collection
+* Report collection
+* GPO administration
+* Link management
+* Active Directory interaction
 
-PowerShell acts as the bridge between GPMP and native Microsoft Group Policy APIs.
-
-<br>
-
-### Active Directory / GPMC
-
-GPMP does not replace Microsoft Group Policy infrastructure.
-
-Instead, it builds a modern operational layer on top of:
-
-- Active Directory
-- Group Policy Management Console APIs
-- native GroupPolicy PowerShell modules
-
-This ensures compatibility with existing enterprise environments.
+This layer allows Sensei to remain fully compatible with Microsoft's native Group Policy infrastructure.
 
 ---
 
-## 🔄 Synchronization Concept
+## 🔐 Authentication & Authorization
 
-GPMP uses a cache-driven synchronization model.
+Sensei uses Windows Integrated Authentication.
 
-Synchronization workflows include:
+Authorization is separated into:
 
-- GPO metadata sync
-- OU structure sync
-- inheritance sync
-- report synchronization
+* Read access
+* Write access
 
-After write operations, affected cache entries are updated immediately to keep the UI synchronized with Active Directory state.
+Access decisions are based on Active Directory group RID membership.
+
+This allows organizations to delegate administrative permissions without modifying application code.
 
 ---
 
-## ⚡ Design Goals
+## 🔄 Synchronization Architecture
 
-The architecture focuses on:
+Sensei operates on a cache-first architecture.
 
-- operational clarity
-- centralized visibility
-- safer workflows
-- responsiveness
-- maintainability
-- extensibility
-- modern administration concepts
+Infrastructure data is synchronized into PostgreSQL and consumed by the user interface.
 
-while remaining fully compatible with Microsoft’s native Group Policy ecosystem.
+Benefits include:
 
+* Faster UI response times
+* Reduced Active Directory load
+* Consistent operational visibility
+* Improved scalability
 
+Synchronization currently supports:
+
+* Organizational Units
+* Group Policy Objects
+* GPO Links
+* Inheritance Information
+* GPO Reports
+
+---
+
+## 🛡️ Write Architecture Philosophy
+
+Sensei follows a deliberately controlled enterprise write model.
+
+Write operations are:
+
+* Disabled by default
+* Separately authorized
+* Explicitly visible in the UI
+* Confirmation protected
+* Operationally logged
+* Immediately synchronized after execution
+
+The architecture intentionally separates:
+
+* Object State
+* Link State
+* Inheritance State
+* Authorization State
+* Operational Mode
+* UI Visibility
+
+This separation allows enterprise-safe administration while maintaining clear visibility into administrative impact.
+
+---
+
+## 🔍 Audit Architecture
+
+The audit subsystem is designed around a data-driven model.
+
+Audit behavior is not hardcoded into the application.
+
+Instead, audit logic is defined through:
+
+* Rule Packs
+* Findings Packs
+* Normalization Catalogs
+
+This approach allows new compliance checks to be introduced without requiring application code changes.
+
+---
+
+## 🧠 Normalization Architecture
+
+Raw Group Policy settings can originate from different report structures and policy categories.
+
+The normalization framework transforms these raw settings into standardized Normalized Keys.
+
+This provides:
+
+* Consistent audit processing
+* Rule reusability
+* Simplified compliance validation
+* Future baseline compatibility
+
+The normalization framework is built around:
+
+* Normalization Catalogs
+* Alias Definitions
+* Category Mappings
+* Resolver Services
+
+---
+
+## 🚀 Architectural Vision
+
+Phase 1 established visibility.
+
+Phase 2 introduced controlled administration.
+
+Phase 3 introduces compliance, auditing and operational intelligence.
+
+The long-term goal is to evolve Sensei into a unified operational control plane for Active Directory environments while remaining fully compatible with Microsoft's native infrastructure.
