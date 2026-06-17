@@ -4,86 +4,194 @@
 
 GPMP aims to become:
 
-“The modern GPMC replacement for real-world enterprise environments.
-Classic GPMC Re-Imagined for admins of tomorrow.”
+> The modern operational control plane for Active Directory and Group Policy environments.
 
-Not just a viewer — but a control plane for Group Policy.
+Rather than replacing Microsoft's infrastructure, GPMP enhances it through:
+
+* Modern administration workflows
+* Operational visibility
+* Compliance validation
+* Security auditing
+* Enterprise automation
+* Centralized management
+
+The long-term vision is to unify administration, compliance and operational intelligence within a single platform.
 
 ---
 
-## 🛣️ Roadmap
+## 🛣️ Platform Evolution
 
-### Phase 2
-<dl>
-  <ul>
-    <li><dt>GPO creation workflow</dt></li>
-    <li><dt>GPO link creation workflow</dt></li>
-    <li><dt>GPO deletion workflow</dt></li>
-    <li><dt>Advanced write auditing</dt></li>
-    <li><dt>Scheduled background sync</dt></li>
-    <li><dt>UI polish</dt></li>
-      <dd>Toolbar Polish:
-        <ul>
-          <li>Sync Button realignment (maybe a drop down menu selection)</li>
-          <li>Button "Create GPO" realignment into "All GPO Objects" pane</li>
-          <li>History polish</li>
-        </ul>
-      </dd>
-      <dd>Sort for "Applied GPOs" (affects only 'directly linked' GPOs):
-        <ul>
-          <li>By Link Order</li>
-          <li>By Name (DESC and ASC)</li>
-        </ul>
-      </dd>
-  </ul>
-</dl>
+### Phase 1 — Visibility ✅
 
+Phase 1 established the foundation for modern Group Policy visibility.
 
-<br>
+Delivered capabilities:
 
-### Phase 3
-<dl>
-  <ul>
-  <li><dt>Advancing Info Tab for selected GPO element</dt></li>
-    <dd>Showing linked OU information including:
-      <ul>
-        <li>Link enabled/disabled</li>
-        <li>Enforced/Not Enforced</li> 
-        <li>if it's directly linked or inherited from parent (hirarchial tree view</li>
-      </ul>
-    </dd>
-    <li><dt>Function "Create and directly link GPO to selected OU"</dt></li>
-    <li><dt>Drag and Drop GPO to OU for linking</dt></li>
-    <li><dt>Full Group Policy Configuration export for security audits</dt></li>
-    <li><dt>Advanced auditing (user, timestamp, before/after values, IDs, filtering, export, possible SIEM integration)</dt></li>
-    <li><dt>GPO Import/Export Functionality (including manifest.xml) like GPMC is doing it</dt></li>
-  </ul>
-</dl>
+* Organizational Unit navigation
+* Group Policy discovery
+* GPO inheritance visualization
+* Cached metadata architecture
+* Search capabilities
+* Browser-based administration experience
 
-<br>
+---
 
-### Phase 4
-<dl>
-  <ul>
-    <li><dt>Backup / Rollback (before write operations?)</dt>
-      <dd>Important for 'destructive' changes</dd>
-    <li><dt>Dry-Run / Preview Mode</dt>
-      <dd>Example: "This action will affect:
-        <ul><li>14 OUs</li>
-          <li>320 users</li>
-          <li>12 servers/workstations</li>
-        </ul>
-      </dd>
-    <li><dt>WMI Filter Management</dt></li>
-    <li><dt>Search by Settings-Content (partially already implemented in phase 1)</dt></li>
-      <dd>Example: "Find every GPO configuring RDP, LAPS, Credential Delegation, Defender, SmartScreen"</dd>
-    <li><dt>Cache-DB-AD Drift detection / Scheduled Background Sync</dt></li>
-      <dd>Example: Configuration changed via GPMC (externally) -> Cache detects drifts</dd></li>
-    <li><dt>Multi Domain Support</dt></li>
-  </ul>
-</dl>
+### Phase 2 — Administration ✅
 
+Phase 2 introduced controlled enterprise administration.
 
+Delivered capabilities:
 
+* Live write operations
+* GPO enable/disable
+* Link enable/disable
+* Enforcement management
+* HTTPS hosting
+* Enterprise authorization model
+* Safe-by-default write architecture
+* Immediate synchronization workflows
 
+---
 
+### Phase 3 — Audit & Compliance 🚧 Current
+
+Phase 3 expands GPMP beyond administration and introduces compliance and operational intelligence.
+
+Current development areas:
+
+#### Audit Framework
+
+* Data-driven audit rules
+* Data-driven audit findings
+* Audit result persistence
+* Compliance visibility
+
+#### Normalization Framework
+
+* Normalized configuration model
+* Alias resolution
+* Category mappings
+* Centralized key resolution
+
+#### Security Analysis
+
+* Microsoft security baseline validation
+* CIS benchmark preparation
+* Compliance reporting
+
+#### Administrative Improvements
+
+* Enhanced linked OU visibility
+* Advanced inheritance insights
+* Create and directly link GPO workflow
+* Drag & drop GPO linking
+* GPO import/export functionality
+
+#### Operational Visibility
+
+* Improved diagnostics
+* Enhanced logging
+* Administrative audit trail
+
+---
+
+### Phase 4 — Operational Intelligence
+
+Phase 4 focuses on predictive and enterprise-scale operational workflows.
+
+Planned capabilities:
+
+#### Change Intelligence
+
+* Configuration drift detection
+* Scheduled background validation
+* Cache vs Active Directory comparison
+* Compliance change tracking
+
+#### Safe Change Management
+
+* Dry-run mode
+* Impact analysis
+* Change preview
+* Pre-execution validation
+
+Example:
+
+```text
+This change affects:
+
+- 14 Organizational Units
+- 320 Users
+- 85 Computers
+- 12 Servers
+```
+
+#### Protection & Recovery
+
+* Automatic backup creation
+* Rollback capabilities
+* Restore points before write operations
+
+#### Advanced Group Policy Management
+
+* WMI Filter management
+* Advanced settings search
+* Setting-level impact analysis
+* Cross-GPO dependency visibility
+
+#### Platform Scalability
+
+* Multi-domain support
+* Forest-wide visibility
+* Distributed synchronization
+
+---
+
+### Phase 5 — Enterprise Automation
+
+Future exploration area.
+
+Potential capabilities:
+
+* Compliance dashboards
+* Automated remediation
+* Policy recommendation engine
+* SIEM integration
+* Scheduled compliance reporting
+* Enterprise workflow automation
+* API-driven integrations
+
+---
+
+## ⚠️ Current Limitations
+
+The following areas are currently under active development:
+
+* Centralized NormalizedKeyResolver implementation
+* Expanded normalization catalog coverage
+* Additional Microsoft Defender audit coverage
+* CIS benchmark rule packs
+* Enhanced compliance reporting
+* Enterprise audit visualization
+
+---
+
+## 🎯 Strategic Direction
+
+GPMP started as a modern web-based alternative to traditional GPMC workflows.
+
+The platform is now evolving into three connected pillars:
+
+### Administration
+
+Managing Group Policy safely and efficiently.
+
+### Compliance
+
+Validating configuration against defined standards.
+
+### Operational Intelligence
+
+Providing visibility into configuration health, risk and change.
+
+The long-term objective is to create a platform that not only manages Group Policy, but actively helps administrators understand, validate and improve their environments.
