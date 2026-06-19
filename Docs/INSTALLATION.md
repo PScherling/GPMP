@@ -219,7 +219,7 @@ Restart-Service GpoPortal
 Run:
 
 ```powershell
-.\Uninstall-GPMP.ps1 -RemovePostgreSql
+.\Uninstall-GPMP.ps1 -RemovePostgreSql -RemoveServiceLogonRight -AccountName "gpmp.svc"
 ```
 
 This will:
@@ -227,6 +227,7 @@ This will:
 - Delete installation files
 - Remove desktop shortcuts
 - Uninstall PostgreSQL and clean up its data directory (if -RemovePostgreSql is specified)
+- Removes the specified domain account from the local security policy setting 'Logon as a service' (if -RemoveServiceLogonRight and -AccountName is specified)
 
 <img alt="image" src="Assets/uninstallation.png" />
 
