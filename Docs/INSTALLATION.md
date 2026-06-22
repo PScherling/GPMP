@@ -116,66 +116,42 @@ The obvious part first! Before you consider using this solution, you need to set
 ## 📦 Installation (Quick Start)
 
 ### 1. Extract the zip package
-<img alt="image" src="Assets/zip-package.png" />
+<img alt="image" src="Assets/package.png" />
 
+### 2. Run Installation
 
-### 2. Prerequisites Installation
-
-Open PowerShell with administrative rights and go into the this directory.
+Run PowerShell as Administrator and execute:
 
 ```powershell
 cd "D:\Temp\GPO-Portal\GPMP-dev-RC-2-v0.0.9\tools"
-```
-
-<img alt="image" src="Assets/set-location.png" />
-
-
-#### Installation of the database (Internet Connection required!)
-Run:
-
-```powershell
-.\Install-GPMP-Prereqs.ps1 -InstallPostgres -CreateDatabase
+.\Install-GPMP.ps1 -OpenFirewall -ApplyMigrations -RunInitialSyncOnStartup -InstallPrerequisites -CreateServiceAccount -DelegateServiceAccountPermissions
 ```
 
 This will:
-- Install required RSAT features
-- Download and install PostgreSQL with dependencies
-- Create database & user
-- Validate connectivity
+- Install required prerequisites such as RSAT tools and PostgreSQL. Internet connection is needed.
+- Deploy the application to C:\Program Files\GpoPortal
+- Register the Windows Service
+- Apply the intended database schema with ApplyMigrations
+- Create the 'Logs' directory in C:\ProgramData\GpoPortal
+- Optionally trigger the initial sync
+- Creates 'gpmp.svc' service account ad user and automatically sets required permissions that needed to run the application
 
-<img alt="image" src="Assets/prereq-installation.png" /><br><br>
+#### Security Advice
+After installation, it is strongly recommended to create a computer-scoped Group Policy for the GPMP service account and configure the following settings under Computer Configuration / Windows Settings / Security Settings / Local Policies / User Rights Assignment:
+- Deny log on through Remote Desktop Services
+- Deny log on locally
+Link this policy to the domain root.
 
-If you don't have an internet connection, you have to provide the postgresql installer file. e.g.:
-```powershell
-.\Install-GPMP-Prereqs.ps1 -InstallPostgres -CreateDatabase -PostgresInstallerPath ".\tools\postgresql-installer.exe" 
-```
-<br>
+<img alt="image" src="Assets/quick-install_1_1.png" /> 
+<img alt="image" src="Assets/quick-install_1_2.png" /> 
 
-### 2. Install the Application
-
-Run:
-
-```powershell
-.\Install-GPMP.ps1 -OpenFirewall -ApplyMigrations -RunInitialSyncOnStartup -InstallPrerequisites
-```
-
-This will:
-- Deploy application to C:\Program Files\GpoPortal
-- Register Windows Service
-- Apply DB schema
-- Creates Log directory in C:\ProgramData\GpoPortal
-- Optionally trigger initial sync
-
-<img alt="image" src="Assets/app-installation.png" /><br>
-
-GPO-Portal is ready now.
 
 <br><br>
 
 ### 3. Access UI
 You can access the UI direct via the url in your favourite web browser or you execute the created desktop shortcut.
-- http://localhost:5015/
-- <img alt="image" src="Assets/desktop-icon.png" /> 
+- http://hostname:5015/
+- <img alt="image" src="Assets/desktop-shortcut.png" /> 
 
 
 
@@ -187,29 +163,6 @@ Initial Report-Sync after first logon:
 An initial sync is running after the logon. You have to run the 'Report Sync' manually to enable accurate GPO Settings/report-content search. It is recommended but it takes a while depending how much Group Policy Objects you have in your system.  
 
 <img alt="image" src="Assets/initial-sync.png" /><br><br>
-
-
-#### DEV MODE
-In developer builds, the application runs per default in "Read-only mode". This means, you can't make any write operations or any other changes.
-<img alt="image" src="Assets/read-only.png" /><br>
-
-You can change this setting in the applications production configuration file:
-```explorer
-C:\Program Files\GpoPortal\appsettings.Production.json
-```
-
-Find and set with 'Notepad++':
-```json
-"AllowWriteOperations":  true
-```
-
-You need to restart the gpo-portal service after changing the configration file in order to take effect:
-```powershell
-Restart-Service GpoPortal
-```
-<img alt="image" src="Assets/write-mode.png" /><br>
-
-
 
 ---
 
@@ -229,7 +182,7 @@ This will:
 - Uninstall PostgreSQL and clean up its data directory (if -RemovePostgreSql is specified)
 - Removes the specified domain account from the local security policy setting 'Logon as a service' (if -RemoveServiceLogonRight and -AccountName is specified)
 
-<img alt="image" src="Assets/uninstallation.png" />
+<img alt="image" src="Assets/uninstall.png" />
 
 ---
 
