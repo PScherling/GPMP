@@ -23,7 +23,7 @@
 
 It modernizes classic Group Policy administration by replacing legacy MMC-based workflows with a fast, interactive and browser-based experience, while still fully relying on Microsoft's native Group Policy infrastructure.
 
-<img alt="image" src="Docs/Assets/Dashboard.png" /><br>
+<img alt="image" src="Docs/Assets/Dashboard_2.png" /><br>
 
 
 GPMP provides:
