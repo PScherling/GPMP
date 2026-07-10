@@ -61,6 +61,61 @@ The current NIGHTLY builds are fully functional and actively used for real-world
 
 ---
 
+### 🛣️ What's next?
+Phase 4 focuses on predictive and enterprise-scale operational workflows.
+
+Planned capabilities:
+
+#### Change Intelligence
+
+* Configuration drift detection
+* Scheduled background validation
+* Cache vs Active Directory comparison
+* Compliance change tracking
+
+#### Safe Change Management
+
+* Dry-run mode
+* Impact analysis
+* Change preview
+* Pre-execution validation
+
+Example:
+
+```text
+This change affects:
+
+- 14 Organizational Units
+- 320 Users
+- 85 Computers
+- 12 Servers
+```
+
+#### Protection & Recovery
+
+* GPO import/export functionality
+* Grpup Policy Configuration Backup creation
+* Rollback capabilities
+* Restore points before write operations
+
+#### Advanced Group Policy Management
+
+* Edit mode (calling gpme.msc)
+* WMI Filter management
+* Advanced settings search
+* Setting-level impact analysis
+* Cross-GPO dependency visibility
+* Create and directly link GPO workflow
+* Drag & drop GPO linking
+
+#### Platform Scalability
+
+* Multi-domain support
+* Forest-wide visibility
+* Distributed synchronization
+
+---
+
 <br>
 
 # ✨ Current Features
