@@ -128,12 +128,14 @@ This change affects:
 
 #### Protection & Recovery
 
-* Automatic backup creation
+* Import/Export of GPOs or Sets of GPOs
+* Grpup Policy Configuration Backup creation
 * Rollback capabilities
 * Restore points before write operations
 
 #### Advanced Group Policy Management
 
+* Edit mode (calling gpme.msc)
 * WMI Filter management
 * Advanced settings search
 * Setting-level impact analysis
