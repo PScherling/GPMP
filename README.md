@@ -23,7 +23,7 @@
 
 It modernizes classic Group Policy administration by replacing legacy MMC-based workflows with a fast, interactive and browser-based experience, while still fully relying on Microsoft's native Group Policy infrastructure.
 
-<img alt="image" src="Docs/Assets/Dashboard_2.png" /><br>
+<img alt="image" src="Docs/Assets/dashboard.png" /><br>
 
 
 GPMP provides:
@@ -52,7 +52,7 @@ GPMP provides:
 | [ARCHITECTURE](https://gpmp.atlassian.net/wiki/external/Y2IyOTMwMzgxNTYyNDdhMmE3YTBlNGFjZTRiY2ViZjQ) | Internal architecture and system design |
 | [AUTH](https://gpmp.atlassian.net/wiki/external/YjNmZGE0MDNjYmZlNGMyM2I3YmM3ZjAwNWIzNzNlODY) | Authentication & Authorization |
 | [ROADMAP](https://gpmp.atlassian.net/wiki/external/ZDNiMjkwYjI0MWY2NDE0YWIxYzNjZTA3ZWM4Mzg0ZjQ) | Planned features and future direction |
-| [Logging](https://gpmp.atlassian.net/wiki/external/MWQzOWFiNjQ4M2VlNDY2MjkxYjNkODQ5NWZmMjk1ZGM) | Application logging information |
+| [LOGGING](https://gpmp.atlassian.net/wiki/external/MWQzOWFiNjQ4M2VlNDY2MjkxYjNkODQ5NWZmMjk1ZGM) | Application logging information |
 
 ---
 
