@@ -46,6 +46,7 @@ GPMP provides:
 
 | Document | Description |
 |---|---|
+| [ONLINE-HELP](https://gpmp.atlassian.net/wiki/x/AoAg) | Online Help Portal |
 | [INSTALLATION](https://gpmp.atlassian.net/wiki/external/NTRiNDVlYjk3MmY4NDJkODg4NmJiOTUyMTQ3ZjU4MTA) | Full installation, deployment and removal/cleanup guide |
 | [CONFIGURATION](https://gpmp.atlassian.net/wiki/external/Njc5YzhiMjU3ZGNjNGZhMWE1NWNkMmZjMGIxYTk4Mzk) | Application configuration |
 | [ARCHITECTURE](https://gpmp.atlassian.net/wiki/external/Y2IyOTMwMzgxNTYyNDdhMmE3YTBlNGFjZTRiY2ViZjQ) | Internal architecture and system design |
