@@ -42,6 +42,21 @@ GPMP provides:
 
 <br>
 
+## 📚 Documentation
+
+| Document | Description |
+|---|---|
+| [INSTALLATION](https://gpmp.atlassian.net/wiki/external/NTRiNDVlYjk3MmY4NDJkODg4NmJiOTUyMTQ3ZjU4MTA) | Full installation, deployment and removal/cleanup guide |
+| [CONFIGURATION](https://gpmp.atlassian.net/wiki/external/Njc5YzhiMjU3ZGNjNGZhMWE1NWNkMmZjMGIxYTk4Mzk) | Application configuration |
+| [ARCHITECTURE](https://gpmp.atlassian.net/wiki/external/Y2IyOTMwMzgxNTYyNDdhMmE3YTBlNGFjZTRiY2ViZjQ) | Internal architecture and system design |
+| [AUTH](https://gpmp.atlassian.net/wiki/external/YjNmZGE0MDNjYmZlNGMyM2I3YmM3ZjAwNWIzNzNlODY) | Authentication & Authorization |
+| [ROADMAP](https://gpmp.atlassian.net/wiki/external/ZDNiMjkwYjI0MWY2NDE0YWIxYzNjZTA3ZWM4Mzg0ZjQ) | Planned features and future direction |
+| [Logging](https://gpmp.atlassian.net/wiki/external/MWQzOWFiNjQ4M2VlNDY2MjkxYjNkODQ5NWZmMjk1ZGM) | Application logging information |
+
+---
+
+<br>
+
 ## 🛠️ Project Status
 
 GPMP is currently in active development and approaching the next major NIGHTLY milestone release.
@@ -242,12 +257,6 @@ while continuing to rely entirely on Microsoft's native Group Policy infrastruct
 | NIGHTLY | Public preview builds with newest features |
 | STABLE | Recommended production-ready releases |
 
-Current public release:
-
-```text
-v0.0.8-nightly-RC1
-```
-
 <br>
 
 #### Channels
@@ -264,37 +273,9 @@ Channels provide a first identification of the current state. There exists 3 cha
 
 GPMP performs live Active Directory Group Policy operations.
 
-Although multiple safety mechanisms and confirmation workflows are implemented ('Read-Only-Mode' per default is set!), this software is still considered pre-release software at least it is not declared with the ![Channel](https://img.shields.io/badge/STABLE-blue) badge.
+Although multiple safety mechanisms and confirmation workflows are implemented, this software is still considered pre-release software at least it is not declared with the ![Channel](https://img.shields.io/badge/STABLE-blue) badge.
 
 Always test in a non-production environment before deploying into critical infrastructure.
-
----
-
-<br>
-
-## 🏗️ Architecture Highlights
-
-GPMP is built around a cache-driven architecture.
-
-Core components:
-
-- ASP.NET Core (.NET 10)
-- PostgreSQL Metadata Cache
-- PowerShell Execution Layer
-- Active Directory Integration
-- Group Policy Management API
-- Synchronization Engine
-- Audit & Compliance Engine
-
-The platform intentionally separates:
-
-- Object State
-- Link State
-- Inheritance State
-- Authorization State
-- Operational State
-
-to provide safer and more predictable administration workflows.
 
 ---
 
@@ -343,21 +324,6 @@ Features include:
 - CSV export packages
 
 The audit engine is designed to support organizational standards, security baselines and future compliance frameworks.
-
----
-
-<br>
-
-## 📚 Documentation
-
-| Document | Description |
-|---|---|
-| [INSTALLATION](https://gpmp.atlassian.net/wiki/external/NTRiNDVlYjk3MmY4NDJkODg4NmJiOTUyMTQ3ZjU4MTA) | Full installation, deployment and removal/cleanup guide |
-| [CONFIGURATION](https://gpmp.atlassian.net/wiki/external/Njc5YzhiMjU3ZGNjNGZhMWE1NWNkMmZjMGIxYTk4Mzk) | Application configuration |
-| [ARCHITECTURE](https://gpmp.atlassian.net/wiki/external/Y2IyOTMwMzgxNTYyNDdhMmE3YTBlNGFjZTRiY2ViZjQ) | Internal architecture and system design |
-| [AUTH](https://gpmp.atlassian.net/wiki/external/YjNmZGE0MDNjYmZlNGMyM2I3YmM3ZjAwNWIzNzNlODY) | Authentication & Authorization |
-| [ROADMAP](https://gpmp.atlassian.net/wiki/external/ZDNiMjkwYjI0MWY2NDE0YWIxYzNjZTA3ZWM4Mzg0ZjQ) | Planned features and future direction |
-| [Logging](https://gpmp.atlassian.net/wiki/external/MWQzOWFiNjQ4M2VlNDY2MjkxYjNkODQ5NWZmMjk1ZGM) | Application logging information |
 
 ---
 
