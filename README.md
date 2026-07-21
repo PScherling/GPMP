@@ -353,12 +353,12 @@ The audit engine is designed to support organizational standards, security basel
 | Document | Description |
 |---|---|
 | [RELEASE-COMPARISON.md](Docs/Release-Comparison.md) | DEV RC1 vs. NIGHTLY RC1 feature comparison |
-| [INSTALLATION.md](Docs/INSTALLATION.md) | Full installation, deployment and removal/cleanup guide |
-| [CONFIGURATION.md](Docs/Application-Configuration.md) | Application configuration reference |
-| [ARCHITECTURE.md](Docs/ARCHITECTURE.md) | Internal architecture and system design |
-| [AUTH.md](Docs/Auth.md) | Authentication & Authorization |
-| [ROADMAP.md](Docs/ROADMAP.md) | Planned features and future direction |
-| [Logging.md](Docs/LOGGING.md) | Application logging information |
+| [INSTALLATION](https://gpmp.atlassian.net/wiki/external/NTRiNDVlYjk3MmY4NDJkODg4NmJiOTUyMTQ3ZjU4MTA) | Full installation, deployment and removal/cleanup guide |
+| [CONFIGURATION](https://gpmp.atlassian.net/wiki/external/Njc5YzhiMjU3ZGNjNGZhMWE1NWNkMmZjMGIxYTk4Mzk) | Application configuration |
+| [ARCHITECTURE](https://gpmp.atlassian.net/wiki/external/Y2IyOTMwMzgxNTYyNDdhMmE3YTBlNGFjZTRiY2ViZjQ) | Internal architecture and system design |
+| [AUTH](https://gpmp.atlassian.net/wiki/external/YjNmZGE0MDNjYmZlNGMyM2I3YmM3ZjAwNWIzNzNlODY) | Authentication & Authorization |
+| [ROADMAP](https://gpmp.atlassian.net/wiki/external/ZDNiMjkwYjI0MWY2NDE0YWIxYzNjZTA3ZWM4Mzg0ZjQ) | Planned features and future direction |
+| [Logging](https://gpmp.atlassian.net/wiki/external/MWQzOWFiNjQ4M2VlNDY2MjkxYjNkODQ5NWZmMjk1ZGM) | Application logging information |
 
 ---
 
