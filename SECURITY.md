@@ -20,7 +20,7 @@ This policy covers GPMP Core, project-maintained modules, launchers, installatio
 
 **Do not publish vulnerability details in public issues, discussions, pull requests, or attachments.**
 
-Use [GitHub private vulnerability reporting](https://github.com/PScherling/Sensei/security/advisories/new): open the repository's **Security and quality** tab and select **Report a vulnerability**, when available.
+Use [GitHub private vulnerability reporting](https://github.com/PScherling/GPMP/security/advisories): open the repository's **Security and quality** tab and select **Report a vulnerability**, when available.
 
 If private reporting is unavailable, open a public issue titled **Security contact request** asking for a private reporting channel. Do not include affected endpoints, exploit details, logs, or sensitive configuration in that issue. Wait for a private channel before sharing the report.
 
